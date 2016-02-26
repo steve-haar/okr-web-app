@@ -1,0 +1,17 @@
+{
+  "name": "okr-web-app",
+  "version": "1.0.0",
+  "description": "OKR Web App for Vintage Software",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-animate": "^1.5.0",
+    "angular-aria": "^1.5.0",
+    "angular-material": "^1.0.5"
+  }
+}
