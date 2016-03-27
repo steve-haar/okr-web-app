@@ -11,6 +11,7 @@
 		vm.company = {};
 		vm.companyId = 1;
         vm.getCompany = getCompany;
+		vm.getCompanyObjectives = getCompanyObjectives;
 		
 		getCompany();
 		
@@ -19,6 +20,14 @@
 				.getCompany(vm.companyId, 'departments.employees')
 				.then(function(data) {
 					vm.company = data;
+				});
+		}
+		
+		function getCompanyObjectives(){
+			apiService
+				.getCompanyObjectives(vm.companyId)
+				.then(function(data) {
+					vm.companyObjectives = data;
 				});
 		}
     }

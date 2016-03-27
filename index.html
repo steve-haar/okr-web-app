@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>OKR Web App</title>
@@ -12,6 +13,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
+
 <body ng-app="app" ng-controller="MainCtrl as main">
 	<label>Name: </label><span>{{main.company.name}}</span>
 	<br />
@@ -25,12 +27,23 @@
 	<input type="text" ng-model="main.companyId" />
 	<button ng-click="main.getCompany()">Press Me</button>
 	
-    <script src="/node_modules/angular/angular.min.js"></script>
-    <script src="/node_modules/angular-animate/angular-animate.min.js"></script>
-    <script src="/node_modules/angular-aria/angular-aria.min.js"></script>
-    <script src="/node_modules/angular-material/angular-material.min.js"></script>
-    <script src="/app/app.module.js"></script>
-	<script src="/app/services/apiService.js"></script>
-	<script src="/app/components/MainCtrl.js"></script>
+	<input type="text" ng-model="main.companyId" />
+	<button ng-click="main.getCompanyObjectives()">Objectives</button>
+	
+	<div ng-repeat="obj in main.companyObjectives">
+		<div>
+			<h4>{{obj.title}}</h4>
+			<p>{{obj.description}}</p>
+		</div>
+	</div>
+	
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="node_modules/angular-material/angular-material.min.js"></script>
+	<script src="node_modules/angular-messages/angular-messages.min.js"></script>
+    <script src="app/app.module.js"></script>
+	<script src="app/services/apiService.js"></script>
+	<script src="app/components/MainCtrl.js"></script>
 </body>
 </html>

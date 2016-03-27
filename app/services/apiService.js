@@ -11,7 +11,8 @@
 		return {
 			getCompanies: getCompanies,
 			getCompany: getCompany,
-			getUsers: getUsers
+			getUsers: getUsers,
+			getCompanyObjectives: getCompanyObjectives
 		};
 
 		function getCompanies() {
@@ -34,5 +35,14 @@
 						return response.data;
 					});
 		}
+		
+		function getCompanyObjectives(id) {
+			return $http.get(baseUrl + '/companies/' + id + '/company-objectives')
+					.then(function(response) {
+						return response.data;
+					});
+		}
+		
+		
 	}
 }());
