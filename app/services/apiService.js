@@ -15,15 +15,13 @@
 			getUsers: getUsers,
 			getCompanyObjectivesById: getCompanyObjectivesById,
 			getDepartmentObjectivesById: getDepartmentObjectivesById,
-			getDepartments: getDepartments,
-			getAssignments: getAssignments,
-			putObjective: putObjective
+			getDepartments: getDepartments
 		};
 		
 		//define functions here
 		
 		//GETS
-		
+		{
 		function getCompanies() {
 			return $http.get(baseUrl + '/companies')
 					.then(function(response) {
@@ -66,25 +64,9 @@
 					});
 		}
 		
-		function getAssignments(){
-			return $http.get(baseUrl + '/assignments')
-					.then(function(response){
-						return response.data;
-					});
-		}
-	
-		//POSTS
 		
-		//PUTS
-		
-		function putObjective(companyId, objId){
-			return $http.get(baseUrl + '/companies' + companyId + '/company-objectives' + objId)
-					.then(function(response){
-						return response.data;
-					});
 		}
 		
-		//DELETES
 		
 	}
 }());

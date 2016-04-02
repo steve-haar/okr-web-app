@@ -15,8 +15,6 @@
 		vm.getDepartments = getDepartments;
 		vm.getCompanyObjectivesById = getCompanyObjectivesById;
 		vm.getDepartmentObjectivesById = getDepartmentObjectivesById;
-		vm.getAssignments = getAssignments;
-		vm.putObjective = putObjective;
 		
 		
 		//functions can be called above their definition, as shown here
@@ -53,22 +51,6 @@
 				.getDepartments(vm.companyId)
 				.then(function(data){
 					vm.departments = data;
-				});
-		}
-		
-		function getAssignments(){
-			apiService
-				.getAssignments()
-				.then(function(data){
-					vm.assignments = data;
-				});
-		}
-		
-		function putObjective(){
-			apiService
-				.putObjective(vm.companyId, vm.objId)
-				.then(function(data) {
-					vm.newObjective = data;
 				});
 		}
     }
