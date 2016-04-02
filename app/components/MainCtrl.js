@@ -13,6 +13,7 @@
 		vm.companyId = 1;
 		vm.departmentId = 1;
 		vm.objectiveAssociationsId = 1;
+		vm.objectiveId = 65535;
         vm.getCompany = getCompany;
 		vm.getDepartments = getDepartments;
 		vm.getCompanyObjectivesById = getCompanyObjectivesById;
@@ -28,6 +29,8 @@
 		vm.getEmployeeById = getEmployeeById;
 		vm.deleteObjectiveAssociationsById = deleteObjectiveAssociationsById;
 		vm.deleteObjectiveAssociationsByObjectiveAssociationId = deleteObjectiveAssociationsByObjectiveAssociationId;
+		vm.deleteCompanyById = deleteCompanyById;
+		vm.deleteCompanyObjectivesById = deleteCompanyObjectivesById;
 		
 		//functions can be called above their definition, as shown here
 		//getCompany();
@@ -136,6 +139,15 @@
 		}
 		function deleteObjectiveAssociationsByObjectiveAssociationId() {
 			apiService.deleteObjectiveAssociationsByObjectiveAssociationId(vm.objectiveAssociationsId);
+		}
+		function deleteCompanyById(){
+			apiService
+				.deleteCompanyById(vm.companyId);
+		}
+		
+		function deleteCompanyObjectivesById(){
+			apiService
+				.deleteCompanyObjectivesById(vm.companyId, vm.objectiveId);
 		}
     }
 }());

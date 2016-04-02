@@ -20,6 +20,7 @@
 	
 	
 	<input type="text" ng-model="main.companyId" />
+	<input type="text" ng-model="main.objectiveId" />
 	
 	</br>Test calls by Company Id:
 	<button ng-click="main.getCompany()">Departments and Employees</button>
@@ -28,6 +29,14 @@
 	<button ng-click="main.getDepartments()">Departments</button></br>
 	<button ng-click="main.getAssignments()">All Assignments</button></br>
 	<button ng-click="main.getObjectiveAssociationsById()">All Objective Associations</button></br>
+	
+	
+	
+	<!-- THIS WORKS. Removing it for safety.
+	<button ng-click="main.deleteCompanyById()">Delete Company by Id</button></br>
+	-->
+	<button ng-click="main.deleteCompanyObjectivesById()">Delete OBJ by CoId/objId</button></br>
+	
 	
 	</br><strong>Departments and Employees:</strong></br>
 	<div ng-repeat="dept in main.company.departments">

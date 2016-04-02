@@ -26,8 +26,9 @@
 			getEmployee: getEmployee,
 			getEmployeeById: getEmployeeById,
 			deleteObjectiveAssociationsById: deleteObjectiveAssociationsById,
-			deleteObjectiveAssociationsByObjectiveAssociationId: deleteObjectiveAssociationsByObjectiveAssociationId
-			
+			deleteObjectiveAssociationsByObjectiveAssociationId: deleteObjectiveAssociationsByObjectiveAssociationId,
+			deleteCompanyById: deleteCompanyById,
+			deleteCompanyObjectivesById: deleteCompanyObjectivesById
 		};
 		
 		//define functions here
@@ -89,7 +90,7 @@
 		//PUTS
 		
 		function putObjective(companyId, objId){
-			return $http.get(baseUrl + '/companies' + companyId + '/company-objectives' + objId)
+			return $http.put(baseUrl + '/companies' + companyId + '/company-objectives' + objId)
 					.then(function(response){
 						return response.data;
 						});
@@ -136,11 +137,6 @@
 				return response.data;
 			})
 		}
-		//PUTS
-		
-		
-		//POSTS
-		
 		
 		//DELETES
 		function deleteObjectiveAssociationsById(id, obj) {
@@ -152,6 +148,16 @@
 		function deleteObjectiveAssociationsByObjectiveAssociationId(id) {
 			return $http.delete(baseUrl + '/objective-associations/' + id)
 			.then(function(response) {
+		function deleteCompanyById(id){
+			return $http.delete(baseUrl + '/companies/' + id)
+			.then(function(response){
+				return;
+			})
+		}
+		
+		function deleteCompanyObjectivesById(companyId, objectiveId){
+			return $http.delete(baseUrl + '/companies/' + companyId + '/company-objectives/' + objectiveId)
+			.then(function(response){
 				return;
 			})
 		}
