@@ -19,6 +19,9 @@
 		};
 		
 		//define functions here
+		
+		//GETS
+		{
 		function getCompanies() {
 			return $http.get(baseUrl + '/companies')
 					.then(function(response) {
@@ -59,6 +62,23 @@
 					.then(function(response){
 						return response.data;
 					});
+		}
+		
+		}
+		
+		//PUTS
+		{
+			
+		}
+		
+		//POSTS
+		{
+			
+		}
+		
+		//DELETES
+		{
+			
 		}
 		
 	}
