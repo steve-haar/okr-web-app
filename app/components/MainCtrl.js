@@ -38,13 +38,11 @@
 		vm.deleteObjectiveAssociationsByObjectiveAssociationId = deleteObjectiveAssociationsByObjectiveAssociationId;
 		vm.deleteCompanyById = deleteCompanyById;
 		vm.deleteCompanyObjectivesById = deleteCompanyObjectivesById;
-<<<<<<< HEAD
 		vm.deleteEmployeeById = deleteEmployeeById;
 		vm.deleteEmployeeByAllId = deleteEmployeeByAllId;
 		vm.deleteEmployeesByDepartment = deleteEmployeesByDepartment;
-=======
 		vm.deleteDepartmentById = deleteDepartmentById;
->>>>>>> origin/master
+
 		
 		//functions can be called above their definition, as shown here
 		//getCompany();
@@ -189,7 +187,7 @@
 				.then(function(data){
 					vm.getKeyResultByCompanyIDDeptIDKeyID = data;
 				});
-		
+				}
 		function deleteObjectiveAssociationsById() {
 			apiService.deleteObjectiveAssociationsById(vm.companyId, vm.departmentId);
 		}
