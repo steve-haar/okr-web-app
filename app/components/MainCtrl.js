@@ -11,6 +11,7 @@
 		//add functions here to be used
 		vm.company = {};
 		vm.companyId = 1;
+		vm.objectiveId = 65535;
         vm.getCompany = getCompany;
 		vm.getDepartments = getDepartments;
 		vm.getCompanyObjectivesById = getCompanyObjectivesById;
@@ -24,7 +25,8 @@
 		vm.getEmployeesByDepartmentAndId = getEmployeesByDepartmentAndId;
 		vm.getEmployee = getEmployee;
 		vm.getEmployeeById = getEmployeeById;
-
+		vm.deleteCompanyById = deleteCompanyById;
+		vm.deleteCompanyObjectivesById = deleteCompanyObjectivesById;
 		
 		//functions can be called above their definition, as shown here
 		//getCompany();
@@ -126,6 +128,16 @@
 			.then(function(data) {
 				vm.Employee = data;
 			})
+		}
+		
+		function deleteCompanyById(){
+			apiService
+				.deleteCompanyById(vm.companyId);
+		}
+		
+		function deleteCompanyObjectivesById(){
+			apiService
+				.deleteCompanyObjectivesById(vm.companyId, vm.objectiveId);
 		}
 
     }
