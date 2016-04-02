@@ -12,7 +12,7 @@
 		return {
 			getCompanies: getCompanies,
 			getCompany: getCompany,
-			getUsers: getUsers,
+			getUsers: getUsers,		
 			getCompanyObjectivesById: getCompanyObjectivesById,
 			getDepartmentObjectivesById: getDepartmentObjectivesById,
 			getDepartments: getDepartments,
@@ -24,7 +24,10 @@
 			getEmployeesByDepartment: getEmployeesByDepartment,
 			getEmployeesByDepartmentAndId: getEmployeesByDepartmentAndId,
 			getEmployee: getEmployee,
-			getEmployeeById: getEmployeeById
+			getEmployeeById: getEmployeeById,
+			deleteObjectiveAssociationsById: deleteObjectiveAssociationsById,
+			deleteObjectiveAssociationsByObjectiveAssociationId: deleteObjectiveAssociationsByObjectiveAssociationId
+			
 		};
 		
 		//define functions here
@@ -140,7 +143,18 @@
 		
 		
 		//DELETES
-		
+		function deleteObjectiveAssociationsById(id, obj) {
+			return $http.delete(baseUrl + '/companies/' + id + '/objective-associations/' + obj)
+			.then(function(response) {
+				return;
+			})
+		}
+		function deleteObjectiveAssociationsByObjectiveAssociationId(id) {
+			return $http.delete(baseUrl + '/objective-associations/' + id)
+			.then(function(response) {
+				return;
+			})
+		}
 		
 	}
 }());

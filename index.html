@@ -27,6 +27,7 @@
 	<button ng-click="main.getDepartmentObjectivesById()">Dept Objectives</button>
 	<button ng-click="main.getDepartments()">Departments</button></br>
 	<button ng-click="main.getAssignments()">All Assignments</button></br>
+	<button ng-click="main.getObjectiveAssociationsById()">All Objective Associations</button></br>
 	
 	</br><strong>Departments and Employees:</strong></br>
 	<div ng-repeat="dept in main.company.departments">
@@ -72,7 +73,19 @@
 			<h4>month: {{assignment.month}}</h4>
 		</div>
 	</div>
-	
+	<input type="text" ng-model="main.departmentId" />
+	<button ng-click="main.deleteObjectiveAssociationsById()">Delete Objective Association</button></br>
+	<input type="text" ng-model="main.objectiveAssociationsId" />
+	<button ng-click="main.deleteObjectiveAssociationsByObjectiveAssociationId()">Delete Objective Association 2</button></br>
+	<br/><strong>All Objective Associations:</strong><br/>
+	<div ng-repeat="objective in main.objectiveAssociations">
+		<div>
+			<h4>ID: {{objective.id}}</h4>
+			<h4>CompanyId: {{objective.companyId}}</h4>
+			<h4>CompanyObjectiveId: {{objective.companyObjectiveId}}</h4>
+			<h4>departmentObjectiveId: {{objective.departmentObjectiveId}}</h4>
+		</div>
+	</div>
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="node_modules/angular-aria/angular-aria.min.js"></script>
