@@ -21,23 +21,25 @@
 	
 	<input type="text" ng-model="main.companyId" />
 	<input type="text" ng-model="main.objectiveId" />
+	<input type="text" ng-model="main.departmentId" />
+	<input type="text" ng-model="main.objectiveAssociationsId" />
 	
 	</br>Test calls by Company Id:
-	<button ng-click="main.getCompany()">Departments and Employees</button>
+	</br><button ng-click="main.getCompany()">Departments and Employees</button>
 	<button ng-click="main.getCompanyObjectivesById()">Objectives</button>
-	<button ng-click="main.getDepartmentObjectivesById()">Dept Objectives</button>
-	<button ng-click="main.getDepartments()">Departments</button></br>
-	<button ng-click="main.getAssignments()">All Assignments</button></br>
-	<button ng-click="main.getObjectiveAssociationsById()">All Objective Associations</button></br>
-	
-	
+	</br><button ng-click="main.getDepartmentObjectivesById()">Dept Objectives</button>
+	<button ng-click="main.getDepartments()">Departments</button>
+	</br><button ng-click="main.getAssignments()">All Assignments</button>
+	<button ng-click="main.getObjectiveAssociationsById()">All Objective Associations</button>
+	</br><button ng-click="main.deleteObjectiveAssociationsById()">Delete Objective Association</button>
+	<button ng-click="main.deleteObjectiveAssociationsByObjectiveAssociationId()">Delete Objective Association 2</button>
 	
 	<!-- THIS WORKS. Removing it for safety.
 	<button ng-click="main.deleteCompanyById()">Delete Company by Id</button></br>
+		<button ng-click="main.deleteCompanyObjectivesById()">Delete OBJ by CoId/objId</button></br>
+	<button ng-click="main.deleteDepartmentById()">Delete dept my CoId/deptId</button></br>
 	-->
-	<button ng-click="main.deleteCompanyObjectivesById()">Delete OBJ by CoId/objId</button></br>
-	
-	
+
 	</br><strong>Departments and Employees:</strong></br>
 	<div ng-repeat="dept in main.company.departments">
 		<div><b>{{dept.name}}</b></div>
@@ -82,10 +84,7 @@
 			<h4>month: {{assignment.month}}</h4>
 		</div>
 	</div>
-	<input type="text" ng-model="main.departmentId" />
-	<button ng-click="main.deleteObjectiveAssociationsById()">Delete Objective Association</button></br>
-	<input type="text" ng-model="main.objectiveAssociationsId" />
-	<button ng-click="main.deleteObjectiveAssociationsByObjectiveAssociationId()">Delete Objective Association 2</button></br>
+	
 	<br/><strong>All Objective Associations:</strong><br/>
 	<div ng-repeat="objective in main.objectiveAssociations">
 		<div>

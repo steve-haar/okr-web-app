@@ -28,7 +28,8 @@
 			deleteObjectiveAssociationsById: deleteObjectiveAssociationsById,
 			deleteObjectiveAssociationsByObjectiveAssociationId: deleteObjectiveAssociationsByObjectiveAssociationId,
 			deleteCompanyById: deleteCompanyById,
-			deleteCompanyObjectivesById: deleteCompanyObjectivesById
+			deleteCompanyObjectivesById: deleteCompanyObjectivesById,
+			deleteDepartmentById: deleteDepartmentById
 		};
 		
 		//define functions here
@@ -161,6 +162,13 @@
 		
 		function deleteCompanyObjectivesById(companyId, objectiveId){
 			return $http.delete(baseUrl + '/companies/' + companyId + '/company-objectives/' + objectiveId)
+			.then(function(response){
+				return;
+			})
+		}
+		
+		function deleteDepartmentById(companyId, deptartmentId){
+			return $http.delete(baseUrl + '/companies/' + companyId + '/departments/' + deptartmentId)
 			.then(function(response){
 				return;
 			})
