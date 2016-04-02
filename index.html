@@ -17,6 +17,17 @@
 <body ng-app="app" ng-controller="MainCtrl as main">
 	<label>Name: </label><span>{{main.company.name}}</span>
 	<br />
+	
+	
+	<input type="text" ng-model="main.companyId" />
+	
+	</br>Test calls by Company Id:
+	<button ng-click="main.getCompany()">Departments and Employees</button>
+	<button ng-click="main.getCompanyObjectivesById()">Objectives</button>
+	<button ng-click="main.getDepartmentObjectivesById()">Dept Objectives</button>
+	<button ng-click="main.getDepartments()">Departments</button></br>
+	
+	</br><strong>Departments and Employees:</strong></br>
 	<div ng-repeat="dept in main.company.departments">
 		<div><b>{{dept.name}}</b></div>
 		<ul ng-repeat="emp in dept.employees">
@@ -24,16 +35,27 @@
 		</ul>
 	</div>
 	
-	<input type="text" ng-model="main.companyId" />
-	<button ng-click="main.getCompany()">Press Me</button>
-	
-	<input type="text" ng-model="main.companyId" />
-	<button ng-click="main.getCompanyObjectives()">Objectives</button>
-	
+	</br><strong>Company Objectives:</strong></br>
 	<div ng-repeat="obj in main.companyObjectives">
 		<div>
 			<h4>{{obj.title}}</h4>
 			<p>{{obj.description}}</p>
+		</div>
+	</div>
+	
+	</br><strong>Department Objectives:</strong></br>
+	<div ng-repeat="obj in main.departmentObjectives">
+		<div>
+			<h4>{{obj.title}}</h4>
+			<p>{{obj.description}}</p>
+		</div>
+	</div>
+	
+	</br><strong>Departments:</strong></br>
+	<div ng-repeat="dept in main.departments">
+		<div>
+			<h4>{{dept.name}}</h4>
+			<p>{{dept.employees}}</p>
 		</div>
 	</div>
 	

@@ -7,14 +7,18 @@
 
 	function apiService($http) {
 		var baseUrl = 'https://vintageokrapi.azurewebsites.net';
-
+		
+		//export function here
 		return {
 			getCompanies: getCompanies,
 			getCompany: getCompany,
 			getUsers: getUsers,
-			getCompanyObjectives: getCompanyObjectives
+			getCompanyObjectivesById: getCompanyObjectivesById,
+			getDepartmentObjectivesById: getDepartmentObjectivesById,
+			getDepartments: getDepartments
 		};
-
+		
+		//define functions here
 		function getCompanies() {
 			return $http.get(baseUrl + '/companies')
 					.then(function(response) {
@@ -36,13 +40,26 @@
 					});
 		}
 		
-		function getCompanyObjectives(id) {
+		function getCompanyObjectivesById(id) {
 			return $http.get(baseUrl + '/companies/' + id + '/company-objectives')
 					.then(function(response) {
 						return response.data;
 					});
 		}
 		
+		function getDepartmentObjectivesById(id){
+			return $http.get(baseUrl + '/companies/' + id + '/department-objectives')
+					.then(function(response) {
+						return response.data;
+					});
+		}
+		
+		function getDepartments(id){
+			return $http.get(baseUrl + '/companies/' + id + '/departments')
+					.then(function(response){
+						return response.data;
+					});
+		}
 		
 	}
 }());
