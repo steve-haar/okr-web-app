@@ -24,7 +24,12 @@
 		vm.getEmployeesByDepartmentAndId = getEmployeesByDepartmentAndId;
 		vm.getEmployee = getEmployee;
 		vm.getEmployeeById = getEmployeeById;
-
+		vm.getKeyResults = getKeyResults;
+		vm.getKeyResultsByID = getKeyResultsByID;
+		vm.getKeyResultByCompanyIDCompanyObjID = getKeyResultByCompanyIDCompanyObjID;
+		vm.getKeyResultByCompanyIDCompanyObjIDKeyID = getKeyResultByCompanyIDCompanyObjIDKeyID;
+		vm.getKeyResultByCompanyIDDeptID = getKeyResultByCompanyIDDeptID;
+		vm.getKeyResultByCompanyIDDeptIDKeyID = getKeyResultByCompanyIDDeptIDKeyID;
 		
 		//functions can be called above their definition, as shown here
 		//getCompany();
@@ -127,6 +132,47 @@
 				vm.Employee = data;
 			})
 		}
-
+			function getKeyResults(){
+			apiService
+				.getKeyResults(vm.companyId)
+				.then(function(data){
+					vm.getKeyResults = data;
+		});
+		}
+				function getKeyResultsByID(){
+			apiService
+				.getKeyResultsByID(vm.companyId)
+				.then(function(data){
+					vm.getKeyResultsByID = data;
+				});
+		}
+				function getKeyResultByCompanyIDCompanyObjID(){
+			apiService
+				.getKeyResultByCompanyIDCompanyObjID(vm.companyId, vm.companyObjectiveId)
+				.then(function(data){
+					vm.getKeyResultByCompanyIDCompanyObjID = data;
+				});
+		}
+				function getKeyResultByCompanyIDCompanyObjIDKeyID(){
+			apiService
+				.getKeyResultByCompanyIDCompanyObjIDKeyID(vm.companyId,vm.companyObjectiveId,vm.keyId)
+				.then(function(data){
+					vm.getKeyResultByCompanyIDCompanyObjIDKeyID = data;
+				});
+		}
+				function getKeyResultByCompanyIDDeptID(){
+			apiService
+				.getKeyResultByCompanyIDDeptID(vm.companyId, vm.departmentId)
+				.then(function(data){
+					vm.getKeyResultByCompanyIDDeptID = data;
+				});
+		}
+				function getKeyResultByCompanyIDDeptIDKeyID(){
+			apiService
+				.getKeyResultByCompanyIDDeptIDKeyID(vm.companyId, vm.departmentId,vm.keyId)
+				.then(function(data){
+					vm.getKeyResultByCompanyIDDeptIDKeyID = data;
+				});
+		}
     }
 }());
