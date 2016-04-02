@@ -10,7 +10,10 @@
 		
 		//add functions here to be used
 		vm.company = {};
-		vm.companyId = 1;
+		vm.companyId = "Company Id";
+		vm.departmentId = "Department Id";
+		vm.objectiveAssociationsId = "Obj Associations Id";
+		vm.objectiveId = "Objective Id";
         vm.getCompany = getCompany;
 		vm.getDepartments = getDepartments;
 		vm.getCompanyObjectivesById = getCompanyObjectivesById;
@@ -30,6 +33,11 @@
 		vm.getKeyResultByCompanyIDCompanyObjIDKeyID = getKeyResultByCompanyIDCompanyObjIDKeyID;
 		vm.getKeyResultByCompanyIDDeptID = getKeyResultByCompanyIDDeptID;
 		vm.getKeyResultByCompanyIDDeptIDKeyID = getKeyResultByCompanyIDDeptIDKeyID;
+		vm.deleteObjectiveAssociationsById = deleteObjectiveAssociationsById;
+		vm.deleteObjectiveAssociationsByObjectiveAssociationId = deleteObjectiveAssociationsByObjectiveAssociationId;
+		vm.deleteCompanyById = deleteCompanyById;
+		vm.deleteCompanyObjectivesById = deleteCompanyObjectivesById;
+		vm.deleteDepartmentById = deleteDepartmentById;
 		
 		//functions can be called above their definition, as shown here
 		//getCompany();
@@ -132,6 +140,7 @@
 				vm.Employee = data;
 			})
 		}
+
 			function getKeyResults(){
 			apiService
 				.getKeyResults(vm.companyId)
@@ -173,6 +182,26 @@
 				.then(function(data){
 					vm.getKeyResultByCompanyIDDeptIDKeyID = data;
 				});
+		
+		function deleteObjectiveAssociationsById() {
+			apiService.deleteObjectiveAssociationsById(vm.companyId, vm.departmentId);
+		}
+		function deleteObjectiveAssociationsByObjectiveAssociationId() {
+			apiService.deleteObjectiveAssociationsByObjectiveAssociationId(vm.objectiveAssociationsId);
+		}
+		function deleteCompanyById(){
+			apiService
+				.deleteCompanyById(vm.companyId);
+		}
+		
+		function deleteCompanyObjectivesById(){
+			apiService
+				.deleteCompanyObjectivesById(vm.companyId, vm.objectiveId);
+		}
+		
+		function deleteDepartmentById(){
+			apiService
+				.deleteDepartmentById(vm.companyId, vm.departmentId);
 		}
     }
 }());
