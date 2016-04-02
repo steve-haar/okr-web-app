@@ -148,6 +148,10 @@
 		function deleteObjectiveAssociationsByObjectiveAssociationId(id) {
 			return $http.delete(baseUrl + '/objective-associations/' + id)
 			.then(function(response) {
+				return;
+			})
+		}
+				
 		function deleteCompanyById(id){
 			return $http.delete(baseUrl + '/companies/' + id)
 			.then(function(response){
