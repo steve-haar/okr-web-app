@@ -25,13 +25,21 @@
 			getEmployeesByDepartmentAndId: getEmployeesByDepartmentAndId,
 			getEmployee: getEmployee,
 			getEmployeeById: getEmployeeById,
+			getKeyResults: getKeyResults,
+			getKeyResultsByID: getKeyResultsByID,
+			getKeyResultsByCompanyIDCompanyObjID: getKeyResultsByCompanyIDCompanyObjID,
+			getKeyResultsByCompanyIDCompanyObjIDKeyID: getKeyResultsByCompanyIDCompanyObjIDKeyID,
+			getKeyResultsByCompanyIDDeptID: getKeyResultsByCompanyIDDeptID,
+			getKeyResultsByCompanyIDDeptIDKeyID: getKeyResultsByCompanyIDDeptIDKeyID,
 			deleteObjectiveAssociationsById: deleteObjectiveAssociationsById,
 			deleteObjectiveAssociationsByObjectiveAssociationId: deleteObjectiveAssociationsByObjectiveAssociationId,
 			deleteCompanyById: deleteCompanyById,
 			deleteCompanyObjectivesById: deleteCompanyObjectivesById,
 			deleteEmployeeById: deleteEmployeeById,
 			deleteEmployeeByAllId: deleteEmployeeByAllId,
-			deleteEmployeeByDepartmentId: deleteEmployeeByDepartmentId
+			deleteEmployeeByDepartmentId: deleteEmployeeByDepartmentId,
+			deleteDepartmentById: deleteDepartmentById
+
 		};
 		
 		//define functions here
@@ -87,7 +95,46 @@
 						return response.data;
 					});
 		}
-	
+		
+		function getKeyResults(){
+			return $http.get(baseUrl +'/key-results')
+				.then(function(response) {
+					return response.data;
+				});
+		}
+		function getKeyResultsByID(id){
+			return $http.get(baseUrl+ '/key-results/'+id)
+				.then(function(response){
+					return response.data;
+				});
+		}
+		
+				function getKeyResultsByCompanyIDCompanyObjID(companyId,companyObjectiveId){
+			return $http.get(baseUrl+'/companies/'+companyId+'/companyObjectives/'+companyObjectiveId+'/key-results')
+			.then(function(response){
+				return response.data;
+			});
+		}
+		function getKeyResultsByCompanyIDCompanyObjIDKeyID(companyId, companyObjectiveId,id){
+			return $http.get(baseUrl+'/companies/'+companyId+'/companyObjectives/'+ companyObjectiveId+'/key-results/'+id)
+			.then(function(response){
+				return response.data;
+			});
+		}
+		
+		function getKeyResultsByCompanyIDDeptID(companyId,departmentObjectiveId){
+			return $http.get(baseUrl+'/companies/'+companyId+'/departmentObjectives/'+departmentObjectiveId+'/key-results/')
+			.then(function(response){
+				return response.data;
+			});
+		}
+		
+		function getKeyResultsByCompanyIDDeptIDKeyID(companyId, departmentObjectiveId,id){
+			return $http.get(baseUrl+'/companies/'+companyId+'/departmentObbjectives/'+departmentObjectiveId+'/key-results/'+id)
+			.then(function(response){
+				return response.data;
+			});
+		}
 		//POSTS
 		
 		//PUTS
@@ -182,6 +229,13 @@
 		function deleteEmployeeByDepartmentId(company, dept) {
 			return $http.delete(baseUrl + '/companies/' + company + '/departments/' + dept + '/employees')
 			.then(function(response) {
+				return;
+			})
+		}
+		
+		function deleteDepartmentById(companyId, deptartmentId){
+			return $http.delete(baseUrl + '/companies/' + companyId + '/departments/' + deptartmentId)
+			.then(function(response){
 				return;
 			})
 		}
