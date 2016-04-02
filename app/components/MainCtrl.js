@@ -15,7 +15,13 @@
 		vm.getDepartments = getDepartments;
 		vm.getCompanyObjectivesById = getCompanyObjectivesById;
 		vm.getDepartmentObjectivesById = getDepartmentObjectivesById;
-		
+		vm.getObjectiveAssociationsById = getObjectiveAssociationsById;
+		vm.getObjectiveAssociations = getObjectiveAssociations;
+		vm.getObjectiveAssociationsByObjectiveId = getObjectiveAssociationsByObjectiveId;
+		vm.getEmployeesByDepartment = getEmployeesByDepartment;
+		vm.getEmployeesByDepartmentAndId = getEmployeesByDepartmentAndId;
+		vm.getEmployee = getEmployee;
+		vm.getEmployeeById = getEmployeeById;
 		
 		//functions can be called above their definition, as shown here
 		//getCompany();
@@ -29,7 +35,6 @@
 					vm.company = data;
 				});
 		}
-		
 		function getCompanyObjectivesById(){
 			apiService
 				.getCompanyObjectivesById(vm.companyId)
@@ -52,6 +57,55 @@
 				.then(function(data){
 					vm.departments = data;
 				});
+		}
+		function getObjectiveAssociationsById(){
+			apiService
+				.getObjectiveAssociationsById(vm.companyId)
+				.then(function(data){
+					vm.objectiveAssociations = data;
+				});
+		}
+		function getObjectiveAssociations(){
+			apiService
+				.getObjectiveAssociations
+				.then(function(data){
+					vm.objectiveAssociations = data;
+				});
+		}
+		function getObjectiveAssociationsByObjectiveId(){
+			apiService
+				.getObjectiveAssociationsByObjectiveId
+				.then(function(data){
+					vm.objectiveAssociations = data;
+				});
+		}
+		function getEmployeesByDepartment() {
+			apiService
+			.getEmployeesByDepartment
+			.then(function(data) {
+				vm.Employee = data;
+			})
+		}
+		function getEmployeesByDepartmentAndId() {
+				apiService
+			.getEmployeesByDepartmentAndId
+			.then(function(data) {
+				vm.Employee = data;
+			})
+		}
+		function getEmployee() {
+				apiService
+			.getEmployee
+			.then(function(data) {
+				vm.Employee = data;
+			})
+		}
+		function getEmployeeById() {
+				apiService
+			.getEmployeeById
+			.then(function(data) {
+				vm.Employee = data;
+			})
 		}
     }
 }());

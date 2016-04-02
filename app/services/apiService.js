@@ -15,13 +15,20 @@
 			getUsers: getUsers,
 			getCompanyObjectivesById: getCompanyObjectivesById,
 			getDepartmentObjectivesById: getDepartmentObjectivesById,
-			getDepartments: getDepartments
+			getDepartments: getDepartments,
+			getObjectiveAssociations: getObjectiveAssociations,
+			getObjectiveAssociationsById: getObjectiveAssociationsById,
+			getObjectiveAssociationsByObjectiveId: getObjectiveAssociationsByObjectiveId,
+			getEmployeesByDepartment: getEmployeesByDepartment,
+			getEmployeesByDepartmentAndId: getEmployeesByDepartmentAndId,
+			getEmployee: getEmployee,
+			getEmployeeById: getEmployeeById
 		};
 		
 		//define functions here
 		
 		//GETS
-		{
+		
 		function getCompanies() {
 			return $http.get(baseUrl + '/companies')
 					.then(function(response) {
@@ -64,22 +71,56 @@
 					});
 		}
 		
+		function getObjectiveAssociationsById(id) {
+			return $http.get(baseUrl + '/companies/' + id + '/objective-associations')
+			.then(function(response) {
+				return response.data;
+			})
 		}
-		
+		function getObjectiveAssociations() {
+			return $http.get(baseUrl + '/objective-associations')
+			.then(function(response) {
+				return response.data;
+			})
+		}
+		function getObjectiveAssociationsByObjectiveId(id) {
+			return $http.get(baseUrl + '/objective-associations/' + id)
+			.then(function(response) {
+				return response.data;
+			})
+		}
+		function getEmployeesByDepartment(id, dept) {
+			return $http.get(baseUrl + '/companies/' + id + '/departments/' + dept)
+			.then(function(response) {
+				return response.data;
+			})
+		}
+		function getEmployeesByDepartmentAndId(id, dept, emp) {
+			return $http.get(baseUrl + '/companies/' + id + '/departments/' + dept + '/employees/' + emp)
+			.then(function(response) {
+				return response.data;
+			})
+		}
+		function getEmployee() {
+			return $http.get(baseUrl + '/employees/')
+			.then(function(response) {
+				return response.data;
+			})
+		}
+		function getEmployeeById(id) {
+			return $http.get(baseUrl + '/employees/' + id)
+			.then(function(response) {
+				return response.data;
+			})
+		}
 		//PUTS
-		{
-			
-		}
+		
 		
 		//POSTS
-		{
-			
-		}
+		
 		
 		//DELETES
-		{
-			
-		}
+		
 		
 	}
 }());
