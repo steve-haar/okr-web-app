@@ -26,6 +26,7 @@
 	<button ng-click="main.getCompanyObjectivesById()">Objectives</button>
 	<button ng-click="main.getDepartmentObjectivesById()">Dept Objectives</button>
 	<button ng-click="main.getDepartments()">Departments</button></br>
+	<button ng-click="main.getAssignments()">All Assignments</button></br>
 	
 	</br><strong>Departments and Employees:</strong></br>
 	<div ng-repeat="dept in main.company.departments">
@@ -38,8 +39,10 @@
 	</br><strong>Company Objectives:</strong></br>
 	<div ng-repeat="obj in main.companyObjectives">
 		<div>
-			<h4>{{obj.title}}</h4>
-			<p>{{obj.description}}</p>
+			<h4>Title: {{obj.title}}</h4>
+			<p>Description: {{obj.description}}</p>
+			<p>ID: {{obj.id}}</p>
+			</br>
 		</div>
 	</div>
 	
@@ -56,6 +59,17 @@
 		<div>
 			<h4>{{dept.name}}</h4>
 			<p>{{dept.employees}}</p>
+		</div>
+	</div>
+	
+	</br><strong>All Assignments:</strong></br>
+	<div ng-repeat="assignment in main.assignments">
+		<div>
+			<h4>ID: {{assignment.id}}</h4>
+			<h4>CompanyId: {{assignment.companyId}}</h4>
+			<h4>DeptObjectiveId: {{assignment.departmentObjectiveId}}</h4>
+			<h4>employeeId: {{assignment.employeeId}}</h4>
+			<h4>month: {{assignment.month}}</h4>
 		</div>
 	</div>
 	
