@@ -103,7 +103,7 @@
 				});
 		}
 		function getKeyResultsByID(id){
-			return $http.get(baseUrl+ '/key-results/'+id)
+			return $http.get(baseUrl+ '/key-results/' + id)
 				.then(function(response){
 					return response.data;
 				});

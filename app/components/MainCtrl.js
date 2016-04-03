@@ -15,6 +15,8 @@
 		vm.departmentId = "Department Id";
 		vm.objectiveAssociationsId = "Obj Associations Id";
 		vm.objectiveId = "Objective Id";
+		vm.keyResultId = "Key Result Id";
+		vm.companyObjectiveId = "Company Objective Id"
         vm.getCompany = getCompany;
 		vm.getDepartments = getDepartments;
 		vm.getCompanyObjectivesById = getCompanyObjectivesById;
@@ -30,10 +32,10 @@
 		vm.getEmployeeById = getEmployeeById;
 		vm.getKeyResults = getKeyResults;
 		vm.getKeyResultsByID = getKeyResultsByID;
-		vm.getKeyResultByCompanyIDCompanyObjID = getKeyResultByCompanyIDCompanyObjID;
-		vm.getKeyResultByCompanyIDCompanyObjIDKeyID = getKeyResultByCompanyIDCompanyObjIDKeyID;
-		vm.getKeyResultByCompanyIDDeptID = getKeyResultByCompanyIDDeptID;
-		vm.getKeyResultByCompanyIDDeptIDKeyID = getKeyResultByCompanyIDDeptIDKeyID;
+		vm.getKeyResultsByCompanyIDCompanyObjID = getKeyResultsByCompanyIDCompanyObjID;
+		vm.getKeyResultsByCompanyIDCompanyObjIDKeyID = getKeyResultsByCompanyIDCompanyObjIDKeyID;
+		vm.getKeyResultsByCompanyIDDeptID = getKeyResultsByCompanyIDDeptID;
+		vm.getKeyResultsByCompanyIDDeptIDKeyID = getKeyResultsByCompanyIDDeptIDKeyID;
 		vm.deleteObjectiveAssociationsById = deleteObjectiveAssociationsById;
 		vm.deleteObjectiveAssociationsByObjectiveAssociationId = deleteObjectiveAssociationsByObjectiveAssociationId;
 		vm.deleteCompanyById = deleteCompanyById;
@@ -149,44 +151,44 @@
 
 			function getKeyResults(){
 			apiService
-				.getKeyResults(vm.companyId)
+				.getKeyResults()
 				.then(function(data){
-					vm.getKeyResults = data;
+					vm.KeyResults = data;
 			});
 		}
 				function getKeyResultsByID(){
 			apiService
-				.getKeyResultsByID(vm.companyId)
+				.getKeyResultsByID(vm.keyResultId)
 				.then(function(data){
-					vm.getKeyResultsByID = data;
+					vm.KeyResults = data;
 				});
 		}
-				function getKeyResultByCompanyIDCompanyObjID(){
+				function getKeyResultsByCompanyIDCompanyObjID(){
 			apiService
-				.getKeyResultByCompanyIDCompanyObjID(vm.companyId, vm.companyObjectiveId)
+				.getKeyResultsByCompanyIDCompanyObjID(vm.companyId, vm.companyObjectiveId)
 				.then(function(data){
-					vm.getKeyResultByCompanyIDCompanyObjID = data;
+					vm.KeyResults = data;
 				});
 		}
-				function getKeyResultByCompanyIDCompanyObjIDKeyID(){
+				function getKeyResultsByCompanyIDCompanyObjIDKeyID(){
 			apiService
-				.getKeyResultByCompanyIDCompanyObjIDKeyID(vm.companyId,vm.companyObjectiveId,vm.keyId)
+				.getKeyResultsByCompanyIDCompanyObjIDKeyID(vm.companyId,vm.companyObjectiveId,vm.keyId)
 				.then(function(data){
-					vm.getKeyResultByCompanyIDCompanyObjIDKeyID = data;
+					vm.KeyResults = data;
 				});
 		}
-				function getKeyResultByCompanyIDDeptID(){
+				function getKeyResultsByCompanyIDDeptID(){
 			apiService
-				.getKeyResultByCompanyIDDeptID(vm.companyId, vm.departmentId)
+				.getKeyResultsByCompanyIDDeptID(vm.companyId, vm.departmentId)
 				.then(function(data){
-					vm.getKeyResultByCompanyIDDeptID = data;
+					vm.KeyResults = data;
 				});
 		}
-				function getKeyResultByCompanyIDDeptIDKeyID(){
+				function getKeyResultsByCompanyIDDeptIDKeyID(){
 			apiService
-				.getKeyResultByCompanyIDDeptIDKeyID(vm.companyId, vm.departmentId,vm.keyId)
+				.getKeyResultsByCompanyIDDeptIDKeyID(vm.companyId, vm.departmentId,vm.keyId)
 				.then(function(data){
-					vm.getKeyResultByCompanyIDDeptIDKeyID = data;
+					vm.KeyResults = data;
 				});
 
 		}
