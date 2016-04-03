@@ -51,6 +51,7 @@
 					vm.company = data;
 				});
 		}
+		
 		function getCompanyObjectivesById(){
 			apiService
 				.getCompanyObjectivesById(vm.companyId)
@@ -182,13 +183,16 @@
 				.then(function(data){
 					vm.getKeyResultByCompanyIDDeptIDKeyID = data;
 				});
+		}
 		
 		function deleteObjectiveAssociationsById() {
 			apiService.deleteObjectiveAssociationsById(vm.companyId, vm.departmentId);
 		}
+		
 		function deleteObjectiveAssociationsByObjectiveAssociationId() {
 			apiService.deleteObjectiveAssociationsByObjectiveAssociationId(vm.objectiveAssociationsId);
 		}
+		
 		function deleteCompanyById(){
 			apiService
 				.deleteCompanyById(vm.companyId);
