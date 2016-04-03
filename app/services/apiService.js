@@ -35,6 +35,9 @@
 			deleteObjectiveAssociationsByObjectiveAssociationId: deleteObjectiveAssociationsByObjectiveAssociationId,
 			deleteCompanyById: deleteCompanyById,
 			deleteCompanyObjectivesById: deleteCompanyObjectivesById,
+			deleteEmployeeById: deleteEmployeeById,
+			deleteEmployeeByAllId: deleteEmployeeByAllId,
+			deleteEmployeeByDepartmentId: deleteEmployeeByDepartmentId,
 			deleteDepartmentById: deleteDepartmentById
 
 		};
@@ -195,10 +198,9 @@
 		function deleteObjectiveAssociationsByObjectiveAssociationId(id) {
 			return $http.delete(baseUrl + '/objective-associations/' + id)
 			.then(function(response) {
-				return;
+			return;
 			})
 		}
-				
 		function deleteCompanyById(id){
 			return $http.delete(baseUrl + '/companies/' + id)
 			.then(function(response){
@@ -212,6 +214,24 @@
 				return;
 			})
 		}
+		function deleteEmployeeById(id) {
+			return $http.delete(baseUrl + '/employees/' + id)
+			.then(function(response) {
+				return;
+			})
+		}
+		function deleteEmployeeByAllId(company, dept, emp) {
+			return $http.delete(baseUrl + '/companies/' + company + '/departments/' + dept + '/employees/' + emp)
+			.then(function(response) {
+				return;
+			})
+		}
+		function deleteEmployeeByDepartmentId(company, dept) {
+			return $http.delete(baseUrl + '/companies/' + company + '/departments/' + dept + '/employees')
+			.then(function(response) {
+				return;
+			})
+		}
 		
 		function deleteDepartmentById(companyId, deptartmentId){
 			return $http.delete(baseUrl + '/companies/' + companyId + '/departments/' + deptartmentId)
@@ -219,6 +239,5 @@
 				return;
 			})
 		}
-		
 	}
 }());

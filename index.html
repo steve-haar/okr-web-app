@@ -23,6 +23,7 @@
 	<input type="text" ng-model="main.objectiveId" />
 	<input type="text" ng-model="main.departmentId" />
 	<input type="text" ng-model="main.objectiveAssociationsId" />
+	<input type="text" ng-model="main.employeeId" />
 	
 	</br>Test calls by Company Id:
 	</br><button ng-click="main.getCompany()">Departments and Employees</button>
@@ -33,6 +34,7 @@
 	<button ng-click="main.getObjectiveAssociationsById()">All Objective Associations</button>
 	</br><button ng-click="main.deleteObjectiveAssociationsById()">Delete Objective Association</button>
 	<button ng-click="main.deleteObjectiveAssociationsByObjectiveAssociationId()">Delete Objective Association 2</button>
+		<button ng-click="main.deleteEmployeeById()">Delete Employee</button></br>
 	
 	<!-- THIS WORKS. Removing it for safety.
 	<button ng-click="main.deleteCompanyById()">Delete Company by Id</button></br>
@@ -65,7 +67,7 @@
 			<p>{{obj.description}}</p>
 		</div>
 	</div>
-	
+
 	</br><strong>Departments:</strong></br>
 	<div ng-repeat="dept in main.departments">
 		<div>
