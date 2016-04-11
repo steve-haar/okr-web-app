@@ -1,0 +1,47 @@
+<div layout="column" layout-align="top center" layout-fill="layout-fill" class="md-padding">
+  <div layout="column" class="content-page md-whiteframe-z2">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>
+          <span>Company Objectives</span>
+        </h2>
+        <!--<span flex></span>
+        <md-button class="md-icon-button" aria-label="Department View">
+          <i class="fa fa-fw fa-arrow-down"></i>
+        </md-button>-->
+      </div>
+    </md-toolbar>
+    <md-content layout="column" class="md-padding">
+      <div ng-repeat="obj in vm.companyObjectives">
+        <div layout="column" class="objective-box md-whiteframe-z1">
+          <md-toolbar class="md-accent">
+            <div class="md-toolbar-tools">
+              <h2><span>{{obj.id}} | {{obj.title}}</span></h2>
+              <span flex></span>
+              <span>{{obj.percentage}}% Complete</span>
+            </div>
+          </md-toolbar>
+          <div class="progress-container">
+            <md-progress-linear md-mode="determinate" value="{{ obj.percentage }}"></md-progress-linear>
+            <!--<md-tooltip md-direction="bottom">
+              {{obj.percentage}}% Complete
+            </md-tooltip>-->
+          </div>
+          <md-content layout="column" class="md-padding">
+            <p><em>Description goes here. {{obj.description}}</em></p>
+            <ul>
+              <li ng-repeat="objectiveAssociation in obj.objectiveAssociations" style="">
+                {{ objectiveAssociation.departmentObjective.title }} - {{ objectiveAssociation.departmentObjective.percentage }}% Complete
+              </li>
+            </ul>
+          </md-content>
+          <md-card-actions layout="row">
+            <span flex></span>
+            <md-button>Action 1</md-button>
+            <md-button>Action 2</md-button>
+          </md-card-actions>
+        </div>
+      </div>
+    </md-content>
+  </div>
+</div>

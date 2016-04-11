@@ -1,0 +1,29 @@
+.login-box {
+  max-width: 90%;
+  width: 500px
+}
+
+.content-page {
+  width: 90%;
+}
+
+.objective-box {
+  margin-bottom: 15px;
+}
+
+.stretch input  {
+  width: 100%
+}
+
+body {
+  background-image: url('../img/background.png');
+  background-size: cover;
+  background-position: top center;
+}
+
+ul {
+  margin:0;
+}
+li {
+  margin: 8px;
+}

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>OKR Web App</title>
+    <meta name="description" content="OKR Web App for Vintage Software">
+    <meta name="author" content="Cameron Hutchison, Dylan Geile, Brandon Johnston, Chris Dunning, and Ryan Everett">
+
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-app="app" ng-controller="MainCtrl as main">
+	<label>Name: </label><span>{{main.company.name}}</span>
+	<br />
+
+
+	<input type="text" ng-model="main.companyId" />
+	<input type="text" ng-model="main.objectiveId" />
+	<input type="text" ng-model="main.departmentId" />
+	<input type="text" ng-model="main.objectiveAssociationsId" />
+	<input type="text" ng-model="main.employeeId" />
+	<input type="text" ng-model="main.keyResultId" />
+	<input type="text" ng-model="main.companyObjectiveId" />
+
+	</br>Test calls by Company Id:
+
+	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
+
+	<button ng-click="main.getCompany()">Departments and Employees</button>
+	<button ng-click="main.getCompanyObjectivesById()">Objectives</button>
+	<button ng-click="main.getDepartmentObjectivesById()">Dept Objectives</button>
+	<button ng-click="main.getDepartments()">Departments</button>
+	</div>
+
+	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
+	<button ng-click="main.getAssignments()">All Assignments</button>
+	<button ng-click="main.getObjectiveAssociationsById()">All Obj Associations</button>
+	<button ng-click="main.deleteObjectiveAssociationsById()">Delete Obj Association</button>
+	<button ng-click="main.deleteObjectiveAssociationsByObjectiveAssociationId()">Delete Obj Association (ID)</button>
+	</div>
+
+	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
+	<button ng-click="main.deleteEmployeeById()">Delete Employee</button>
+	<button ng-click="main.deleteCompanyById()">Delete Company by Id</button>
+	<button ng-click="main.deleteCompanyObjectivesById()">Delete OBJ by CoId/objId</button>
+	<button ng-click="main.deleteDepartmentById()">Delete dept my CoId/deptId</button>
+	</div>
+
+	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
+	<button ng-click="main.getKeyResults()">Key Results (All)</button>
+	<button ng-click="main.getKeyResultsById()">Key Results (KRId)</button>
+	<button ng-click="main.getKeyResultsByCompanyIDCompanyObjID()">Key Results (CoId)</button>
+	</div>
+
+	</br><strong>Departments and Employees:</strong></br>
+	<div ng-repeat="dept in main.company.departments">
+		<div><b>{{dept.name}}</b></div>
+		<ul ng-repeat="emp in dept.employees">
+			<li>{{emp.lastName}}, {{emp.firstName}}</li>
+		</ul>
+	</div>
+
+	</br><strong>Company Objectives:</strong></br>
+	<div ng-repeat="obj in main.companyObjectives">
+		<div>
+			<h4>Title: {{obj.title}}</h4>
+			<p>Description: {{obj.description}}</p>
+			<p>ID: {{obj.id}}</p>
+			</br>
+		</div>
+	</div>
+
+	</br><strong>Department Objectives:</strong></br>
+	<div ng-repeat="obj in main.departmentObjectives">
+		<div>
+			<h4>{{obj.title}}</h4>
+			<p>{{obj.description}}</p>
+		</div>
+	</div>
+
+	</br><strong>Departments:</strong></br>
+	<div ng-repeat="dept in main.departments">
+		<div>
+			<h4>{{dept.name}}</h4>
+			<p>{{dept.employees}}</p>
+		</div>
+	</div>
+
+	</br><strong>All Assignments:</strong></br>
+	<div ng-repeat="assignment in main.assignments">
+		<div>
+			<h4>ID: {{assignment.id}}</h4>
+			<h4>CompanyId: {{assignment.companyId}}</h4>
+			<h4>DeptObjectiveId: {{assignment.departmentObjectiveId}}</h4>
+			<h4>employeeId: {{assignment.employeeId}}</h4>
+			<h4>month: {{assignment.month}}</h4>
+		</div>
+	</div>
+
+	<br/><strong>All Objective Associations:</strong><br/>
+	<div ng-repeat="objective in main.objectiveAssociations">
+		<div>
+			<h4>ID: {{objective.id}}</h4>
+			<h4>CompanyId: {{objective.companyId}}</h4>
+			<h4>CompanyObjectiveId: {{objective.companyObjectiveId}}</h4>
+			<h4>departmentObjectiveId: {{objective.departmentObjectiveId}}</h4>
+		</div>
+	</div>
+
+	<br/><strong>Key Results Output:</strong><br/>
+	<div ng-repeat="keyResult in main.KeyResults">
+		<div>
+			<h4>ID: {{keyResult.id}}</h4>
+			<h4>CompanyId: {{keyResult.companyId}}</h4>
+			<h4>CompanyObjectiveId: {{keyResult.companyObjectiveId}}</h4>
+			<h4>deptartmentObjectiveId: {{keyResult.departmentObjectiveId}}</h4>
+			<h4>Title:: {{keyResult.title}}</h4>
+			<h4>Description: {{keyResult.description}}</h4>
+		</div>
+	</div>
+
+
+  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+  <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+  <script src="node_modules/angular-material/angular-material.min.js"></script>
+	<script src="node_modules/angular-messages/angular-messages.min.js"></script>
+  <script src="app/app.module.js"></script>
+	<script src="app/services/apiService.js"></script>
+	<script src="app/components/MainCtrl.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<div layout="column" layout-align="center center" layout-fill="layout-fill">
+  <div layout="column" class="login-box md-whiteframe-z1">
+    <md-toolbar>
+      <h2 class="md-toolbar-tools"><span>Vintage OKR Login</span></h2>
+    </md-toolbar>
+    <form name="loginForm" ng-submit="vm.login()">
+      <md-content layout="column" class="md-padding">
+        <md-input-container>
+          <label>Email Address</label>
+          <input type="email" ng-model="vm.email" />
+          <div ng-if="vm.error">
+            <div ng-message="required">Invalid login email address.</div>
+          </div>
+        </md-input-container>
+        <div layout="row" layout-align="center center" style="padding-top:20px;">
+          <md-button class="md-raised md-primary" ng-click="vm.login()">Login</md-button>
+        </div>
+      </md-content>
+    </form>
+  </div>
+</div>

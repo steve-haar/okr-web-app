@@ -7,15 +7,15 @@
 
 	function apiService($http) {
 		var baseUrl = 'https://vintageokrapi.azurewebsites.net';
-		
+
 		//export function here
 		return {
 			getCompanies: getCompanies,
 			getCompany: getCompany,
-			getUsers: getUsers,		
+			getUsers: getUsers,
 			getCompanyObjectivesById: getCompanyObjectivesById,
 			getDepartmentObjectivesById: getDepartmentObjectivesById,
-			getDepartments: getDepartments,
+			getDepartmentsByCompanyId: getDepartmentsByCompanyId,
 			getAssignments: getAssignments,
 			putObjective: putObjective,
 			getObjectiveAssociations: getObjectiveAssociations,
@@ -23,7 +23,7 @@
 			getObjectiveAssociationsByObjectiveId: getObjectiveAssociationsByObjectiveId,
 			getEmployeesByDepartment: getEmployeesByDepartment,
 			getEmployeesByDepartmentAndId: getEmployeesByDepartmentAndId,
-			getEmployee: getEmployee,
+			getEmployees: getEmployees,
 			getEmployeeById: getEmployeeById,
 			getKeyResults: getKeyResults,
 			getKeyResultsByID: getKeyResultsByID,
@@ -41,53 +41,53 @@
 			deleteDepartmentById: deleteDepartmentById
 
 		};
-		
+
 		//define functions here
-		
+
 		//GETS
-		
+
 		function getCompanies() {
 			return $http.get(baseUrl + '/companies')
 					.then(function(response) {
 						return response.data;
 					});
 		}
-		
+
 		function getCompany(id, includes) {
 			return $http.get(baseUrl + '/companies/' + id + '?include=' + includes)
 					.then(function(response) {
 						return response.data;
 					});
 		}
-		
+
 		function getUsers() {
 			return $http.get(baseUrl + '/users')
 					.then(function(response) {
 						return response.data;
 					});
 		}
-		
+
 		function getCompanyObjectivesById(id) {
-			return $http.get(baseUrl + '/companies/' + id + '/company-objectives')
+			return $http.get(baseUrl + '/companies/' + id + '/company-objectives/?include=objectiveAssociations,objectiveAssociations.departmentObjective')
 					.then(function(response) {
 						return response.data;
 					});
 		}
-		
+
 		function getDepartmentObjectivesById(id){
 			return $http.get(baseUrl + '/companies/' + id + '/department-objectives')
 					.then(function(response) {
 						return response.data;
 					});
 		}
-		
-		function getDepartments(id){
+
+		function getDepartmentsByCompanyId(id){
 			return $http.get(baseUrl + '/companies/' + id + '/departments')
 					.then(function(response){
 						return response.data;
 					});
 		}
-		
+
 
 		function getAssignments(){
 			return $http.get(baseUrl + '/assignments')
@@ -95,7 +95,7 @@
 						return response.data;
 					});
 		}
-		
+
 		function getKeyResults(){
 			return $http.get(baseUrl +'/key-results')
 				.then(function(response) {
@@ -108,7 +108,7 @@
 					return response.data;
 				});
 		}
-		
+
 				function getKeyResultsByCompanyIDCompanyObjID(companyId,companyObjectiveId){
 			return $http.get(baseUrl+'/companies/'+companyId+'/companyObjectives/'+companyObjectiveId+'/key-results')
 			.then(function(response){
@@ -121,14 +121,14 @@
 				return response.data;
 			});
 		}
-		
+
 		function getKeyResultsByCompanyIDDeptID(companyId,departmentObjectiveId){
 			return $http.get(baseUrl+'/companies/'+companyId+'/departmentObjectives/'+departmentObjectiveId+'/key-results/')
 			.then(function(response){
 				return response.data;
 			});
 		}
-		
+
 		function getKeyResultsByCompanyIDDeptIDKeyID(companyId, departmentObjectiveId,id){
 			return $http.get(baseUrl+'/companies/'+companyId+'/departmentObbjectives/'+departmentObjectiveId+'/key-results/'+id)
 			.then(function(response){
@@ -136,9 +136,9 @@
 			});
 		}
 		//POSTS
-		
+
 		//PUTS
-		
+
 		function putObjective(companyId, objId){
 			return $http.put(baseUrl + '/companies' + companyId + '/company-objectives' + objId)
 					.then(function(response){
@@ -175,7 +175,7 @@
 				return response.data;
 			})
 		}
-		function getEmployee() {
+		function getEmployees() {
 			return $http.get(baseUrl + '/employees/')
 			.then(function(response) {
 				return response.data;
@@ -187,7 +187,7 @@
 				return response.data;
 			})
 		}
-		
+
 		//DELETES
 		function deleteObjectiveAssociationsById(id, obj) {
 			return $http.delete(baseUrl + '/companies/' + id + '/objective-associations/' + obj)
@@ -207,7 +207,7 @@
 				return;
 			})
 		}
-		
+
 		function deleteCompanyObjectivesById(companyId, objectiveId){
 			return $http.delete(baseUrl + '/companies/' + companyId + '/company-objectives/' + objectiveId)
 			.then(function(response){
@@ -232,7 +232,7 @@
 				return;
 			})
 		}
-		
+
 		function deleteDepartmentById(companyId, deptartmentId){
 			return $http.delete(baseUrl + '/companies/' + companyId + '/departments/' + deptartmentId)
 			.then(function(response){

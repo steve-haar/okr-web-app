@@ -7,7 +7,7 @@
 
     function MainCtrl(apiService) {
         var vm = this;
-		
+
 		//add functions here to be used
 		vm.company = {};
 		vm.companyId = "Company Id";
@@ -17,7 +17,7 @@
 		vm.objectiveId = "Objective Id";
 		vm.keyResultId = "Key Result Id";
 		vm.companyObjectiveId = "Company Objective Id"
-        vm.getCompany = getCompany;
+    vm.getCompany = getCompany;
 		vm.getDepartments = getDepartments;
 		vm.getCompanyObjectivesById = getCompanyObjectivesById;
 		vm.getDepartmentObjectivesById = getDepartmentObjectivesById;
@@ -28,7 +28,7 @@
 		vm.getObjectiveAssociationsByObjectiveId = getObjectiveAssociationsByObjectiveId;
 		vm.getEmployeesByDepartment = getEmployeesByDepartment;
 		vm.getEmployeesByDepartmentAndId = getEmployeesByDepartmentAndId;
-		vm.getEmployee = getEmployee;
+		vm.getEmployees = getEmployees;
 		vm.getEmployeeById = getEmployeeById;
 		vm.getKeyResults = getKeyResults;
 		vm.getKeyResultsByID = getKeyResultsByID;
@@ -45,11 +45,11 @@
 		vm.deleteEmployeesByDepartment = deleteEmployeesByDepartment;
 		vm.deleteDepartmentById = deleteDepartmentById;
 
-		
+
 		//functions can be called above their definition, as shown here
 		//getCompany();
-		
-		
+
+
 		//define functions here with apiService call. uses Request Url from swagger api.
 		function getCompany(){
 			apiService
@@ -58,7 +58,7 @@
 					vm.company = data;
 				});
 		}
-		
+
 		function getCompanyObjectivesById(){
 			apiService
 				.getCompanyObjectivesById(vm.companyId)
@@ -66,7 +66,7 @@
 					vm.companyObjectives = data;
 				});
 		}
-		
+
 		function getDepartmentObjectivesById(){
 			apiService
 				.getDepartmentObjectivesById(vm.companyId)
@@ -74,7 +74,7 @@
 					vm.departmentObjectives = data;
 				});
 		}
-		
+
 		function getDepartments(){
 			apiService
 				.getDepartments(vm.companyId)
@@ -82,7 +82,7 @@
 					vm.departments = data;
 				});
 		}
-		
+
 		function getAssignments(){
 			apiService
 				.getAssignments()
@@ -90,7 +90,7 @@
 					vm.assignments = data;
 				});
 		}
-		
+
 		function putObjective(){
 			apiService
 				.putObjective(vm.companyId, vm.objId)
@@ -134,9 +134,9 @@
 				vm.Employee = data;
 			})
 		}
-		function getEmployee() {
+		function getEmployees() {
 				apiService
-			.getEmployee
+			.getEmployees
 			.then(function(data) {
 				vm.Employee = data;
 			})
@@ -192,15 +192,15 @@
 				});
 
 		}
-		
+
 		function deleteObjectiveAssociationsById() {
 			apiService.deleteObjectiveAssociationsById(vm.companyId, vm.departmentId);
 		}
-		
+
 		function deleteObjectiveAssociationsByObjectiveAssociationId() {
 			apiService.deleteObjectiveAssociationsByObjectiveAssociationId(vm.objectiveAssociationsId);
 		}
-		
+
 		function deleteCompanyById(){
 			apiService
 				.deleteCompanyById(vm.companyId);
