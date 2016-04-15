@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node_modules/.bin/live-server.cmd --port=80"
+    "server": "node_modules/.bin/live-server.cmd --port=8080"
   },
   "author": "",
   "license": "ISC",

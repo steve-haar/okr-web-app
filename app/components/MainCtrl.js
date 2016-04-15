@@ -22,7 +22,7 @@
 		vm.getCompanyObjectivesById = getCompanyObjectivesById;
 		vm.getDepartmentObjectivesById = getDepartmentObjectivesById;
 		vm.getAssignments = getAssignments;
-		vm.putObjective = putObjective;
+		vm.putCompanyObjective = putCompanyObjective;
 		vm.getObjectiveAssociationsById = getObjectiveAssociationsById;
 		vm.getObjectiveAssociations = getObjectiveAssociations;
 		vm.getObjectiveAssociationsByObjectiveId = getObjectiveAssociationsByObjectiveId;
@@ -91,11 +91,24 @@
 				});
 		}
 
-		function putObjective(){
+		function putCompanyObjective(){
+			//Fields will contain current object values. All values are overwritten.
+			//id may not be changeable.
+			var updatedObj = {
+				companyId: "vm.companyId",
+				company: "vm.company",
+				id: "vm.id",
+				title: "vm.title",
+				description: "vm.description",
+				percentage: "vm.percentage",
+				estimatedCompletionDate: "vm.estimatedCompletionDate",
+				keyResults: "vm.keyResults",
+				objectiveAssociations: "vm.objectiveAssociations"
+			};
+			
 			apiService
-				.putObjective(vm.companyId, vm.objId)
+				.putCompanyObjective(updatedObj)
 				.then(function(data) {
-					vm.newObjective = data;
 				});
 		}
 

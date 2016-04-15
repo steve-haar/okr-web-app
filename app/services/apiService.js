@@ -17,7 +17,7 @@
 			getDepartmentObjectivesById: getDepartmentObjectivesById,
 			getDepartmentsByCompanyId: getDepartmentsByCompanyId,
 			getAssignments: getAssignments,
-			putObjective: putObjective,
+			putCompanyObjective: putCompanyObjective,
 			getObjectiveAssociations: getObjectiveAssociations,
 			getObjectiveAssociationsById: getObjectiveAssociationsById,
 			getObjectiveAssociationsByObjectiveId: getObjectiveAssociationsByObjectiveId,
@@ -38,8 +38,8 @@
 			deleteEmployeeById: deleteEmployeeById,
 			deleteEmployeeByAllId: deleteEmployeeByAllId,
 			deleteEmployeeByDepartmentId: deleteEmployeeByDepartmentId,
-			deleteDepartmentById: deleteDepartmentById
-
+			deleteDepartmentById: deleteDepartmentById,
+			
 		};
 
 		//define functions here
@@ -52,50 +52,42 @@
 						return response.data;
 					});
 		}
-
 		function getCompany(id, includes) {
 			return $http.get(baseUrl + '/companies/' + id + '?include=' + includes)
 					.then(function(response) {
 						return response.data;
 					});
 		}
-
 		function getUsers() {
 			return $http.get(baseUrl + '/users')
 					.then(function(response) {
 						return response.data;
 					});
 		}
-
 		function getCompanyObjectivesById(id) {
 			return $http.get(baseUrl + '/companies/' + id + '/company-objectives/?include=objectiveAssociations,objectiveAssociations.departmentObjective')
 					.then(function(response) {
 						return response.data;
 					});
 		}
-
 		function getDepartmentObjectivesById(id){
 			return $http.get(baseUrl + '/companies/' + id + '/department-objectives')
 					.then(function(response) {
 						return response.data;
 					});
 		}
-
 		function getDepartmentsByCompanyId(id){
 			return $http.get(baseUrl + '/companies/' + id + '/departments')
 					.then(function(response){
 						return response.data;
 					});
 		}
-
-
 		function getAssignments(){
 			return $http.get(baseUrl + '/assignments')
 					.then(function(response){
 						return response.data;
 					});
 		}
-
 		function getKeyResults(){
 			return $http.get(baseUrl +'/key-results')
 				.then(function(response) {
@@ -121,29 +113,17 @@
 				return response.data;
 			});
 		}
-
 		function getKeyResultsByCompanyIDDeptID(companyId,departmentObjectiveId){
 			return $http.get(baseUrl+'/companies/'+companyId+'/departmentObjectives/'+departmentObjectiveId+'/key-results/')
 			.then(function(response){
 				return response.data;
 			});
 		}
-
 		function getKeyResultsByCompanyIDDeptIDKeyID(companyId, departmentObjectiveId,id){
 			return $http.get(baseUrl+'/companies/'+companyId+'/departmentObbjectives/'+departmentObjectiveId+'/key-results/'+id)
 			.then(function(response){
 				return response.data;
 			});
-		}
-		//POSTS
-
-		//PUTS
-
-		function putObjective(companyId, objId){
-			return $http.put(baseUrl + '/companies' + companyId + '/company-objectives' + objId)
-					.then(function(response){
-						return response.data;
-						});
 		}
 		function getObjectiveAssociationsById(id) {
 			return $http.get(baseUrl + '/companies/' + id + '/objective-associations')
@@ -187,8 +167,24 @@
 				return response.data;
 			})
 		}
+		
+		
+		//POSTS
+
+		
+		
+		//PUTS
+
+		function putCompanyObjective(updatedObj){
+			return $http.put(baseUrl + '/companies/' + updatedObj.companyId + '/company-objectives/' + updatedObj.id, updatedObj)
+					.then(function(response){
+						return response.data;
+						});
+		}
+		
 
 		//DELETES
+		
 		function deleteObjectiveAssociationsById(id, obj) {
 			return $http.delete(baseUrl + '/companies/' + id + '/objective-associations/' + obj)
 			.then(function(response) {
@@ -207,7 +203,6 @@
 				return;
 			})
 		}
-
 		function deleteCompanyObjectivesById(companyId, objectiveId){
 			return $http.delete(baseUrl + '/companies/' + companyId + '/company-objectives/' + objectiveId)
 			.then(function(response){
@@ -232,7 +227,6 @@
 				return;
 			})
 		}
-
 		function deleteDepartmentById(companyId, deptartmentId){
 			return $http.delete(baseUrl + '/companies/' + companyId + '/departments/' + deptartmentId)
 			.then(function(response){

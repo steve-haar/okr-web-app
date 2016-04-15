@@ -22,6 +22,12 @@ angular.module('app', [
 		controllerAs: 'vm'
 	})
 
+	.when('/demo', {
+		templateUrl: 'app/views/demo.html',
+		controller: 'MainCtrl',
+		controllerAs: 'main'
+	})
+	
 	.otherwise({
 		redirectTo: '/login'
 	});
