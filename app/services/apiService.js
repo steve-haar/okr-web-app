@@ -45,7 +45,7 @@
 			deleteEmployeeByAllId: deleteEmployeeByAllId,
 			deleteEmployeeByDepartmentId: deleteEmployeeByDepartmentId,
 			deleteDepartmentById: deleteDepartmentById,
-
+			postCompany: postCompany
 		};
 
 		//define functions here
@@ -188,9 +188,11 @@
 
 
 		//POSTS
-
-
-
+		function postCompany(newObj){
+			return $http.post(baseUrl + '/companies', newObj)
+			.then(funtion(response))
+		}
+		
 		//PUTS
 
 		function putCompanyObjective(updatedObj){

@@ -22,9 +22,16 @@ angular.module('app', [
 		controllerAs: 'vm'
 	})
 
-	.when('/departments/:departmentId', {
+	.when('/companies/:companyId/departments/:departmentId', {
 		templateUrl: 'app/views/department-objectives.html',
 		controller: 'DepartmentObjectivesCtrl',
+		controllerAs: 'vm'
+	})
+
+
+	.when('/companies/:companyId/company-objective/create', {
+		templateUrl: 'app/views/create-edit-company-objective.html',
+		controller: 'CreateCompanyObjectiveCtrl',
 		controllerAs: 'vm'
 	})
 
