@@ -12,10 +12,13 @@
     vm.company = {};
     vm.companyObjectives = {};
     vm.companyDepartments = {};
+    vm.createNewObjective = function(){ $location.path("/companies/" + vm.companyId + "/company-objective/create") };
 
     getCompanyObjectivesById(vm.companyId);
     getCompanyDepartmentsById(vm.companyId);
     getCompany(vm.companyId);
+
+
 
     function getCompany(id)
     {
