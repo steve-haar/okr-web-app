@@ -18,12 +18,6 @@
 			getDepartmentsByCompanyId: getDepartmentsByCompanyId,
 			getDepartmentById: getDepartmentById,
 			getAssignments: getAssignments,
-			putCompanyObjective: putCompanyObjective,
-			putCompany: putCompany,
-			putDepartmentObjective: putDepartmentObjective,
-			putDepartment: putDepartment,
-			putEmployee: putEmployee,
-			putKeyResult: putKeyResult,
 			getObjectiveAssociations: getObjectiveAssociations,
 			getObjectiveAssociationsById: getObjectiveAssociationsById,
 			getObjectiveAssociationsByObjectiveId: getObjectiveAssociationsByObjectiveId,
@@ -33,10 +27,20 @@
 			getEmployeeById: getEmployeeById,
 			getKeyResults: getKeyResults,
 			getKeyResultsByID: getKeyResultsByID,
-			//getKeyResultsByCompanyIDCompanyObjID: getKeyResultsByCompanyIDCompanyObjID,
-			//getKeyResultsByCompanyIDCompanyObjIDKeyID: getKeyResultsByCompanyIDCompanyObjIDKeyID,
-			//getKeyResultsByCompanyIDDeptID: getKeyResultsByCompanyIDDeptID,
-			//getKeyResultsByCompanyIDDeptIDKeyID: getKeyResultsByCompanyIDDeptIDKeyID,
+			getCompanyObjectives: getCompanyObjectives,
+			putCompanyObjective: putCompanyObjective,
+			putCompany: putCompany,
+			putDepartmentObjective: putDepartmentObjective,
+			putDepartment: putDepartment,
+			putEmployee: putEmployee,
+			putKeyResult: putKeyResult,
+			postCompany: postCompany,
+			postAssignment: postAssignment,
+			postCompanyObjective: postCompanyObjective,
+			postDepartmentObjective: postDepartmentObjective,
+			postDepartment: postDepartment,
+			postEmployee: postEmployee,
+			postKeyResult: postKeyResult,
 			deleteObjectiveAssociationsById: deleteObjectiveAssociationsById,
 			deleteObjectiveAssociationsByObjectiveAssociationId: deleteObjectiveAssociationsByObjectiveAssociationId,
 			deleteCompanyById: deleteCompanyById,
@@ -125,34 +129,6 @@
 					return response.data;
 				});
 		}
-
-		/* This functionality has been removed from the API
-			function getKeyResultsByCompanyIDCompanyObjID(companyId,companyObjectiveId){
-			return $http.get(baseUrl+'/companies/'+companyId+'/companyObjectives/'+companyObjectiveId+'/key-results')
-			.then(function(response){
-				return response.data;
-			});
-		}
-		function getKeyResultsByCompanyIDCompanyObjIDKeyID(companyId, companyObjectiveId,id){
-			return $http.get(baseUrl+'/companies/'+companyId+'/companyObjectives/'+ companyObjectiveId+'/key-results/'+id)
-			.then(function(response){
-				return response.data;
-			});
-		}
-		function getKeyResultsByCompanyIDDeptID(companyId,departmentObjectiveId){
-			return $http.get(baseUrl+'/companies/'+companyId+'/departmentObjectives/'+departmentObjectiveId+'/key-results/')
-			.then(function(response){
-				return response.data;
-			});
-		}
-		function getKeyResultsByCompanyIDDeptIDKeyID(companyId, departmentObjectiveId,id){
-			return $http.get(baseUrl+'/companies/'+companyId+'/departmentObbjectives/'+departmentObjectiveId+'/key-results/'+id)
-			.then(function(response){
-				return response.data;
-			});
-		}
-		*/
-
 		function getObjectiveAssociationsById(id) {
 			return $http.get(baseUrl + '/companies/' + id + '/objective-associations')
 			.then(function(response) {
@@ -226,6 +202,32 @@
 				return response.data;
 			})
 		}
+		function postDepartmentObjective(newObj){
+			return $http.post(baseUrl + '/department-objectives', newObj)
+			.then(function(response) {
+				return response.data;
+			})
+		}
+		function postDepartment(newObj){
+			return $http.post(baseUrl + '/departments', newObj)
+			.then(function(response) {
+				return response.data;
+			})
+		}
+		function postEmployee(newObj){
+			return $http.post(baseUrl + '/employees', newObj)
+			.then(function(response) {
+				return response.data;
+			})
+		}
+		function postKeyResult(newObj){
+			return $http.post(baseUrl + '/Key-Results', newObj)
+			.then(function(response) {
+				return response.data;
+			})
+		}
+
+
 		//PUTS
 
 		function putCompanyObjective(updatedObj){
