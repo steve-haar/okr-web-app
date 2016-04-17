@@ -3,13 +3,15 @@
       <md-content layout="column" class="md-padding">
 
 
-	Posting Company Objectives Test Boxes
 	<input type="text" ng-model="main.companyId" />
 	<input type="text" ng-model="main.id" />
 	<input type="text" ng-model="main.title" />
 	<input type="text" ng-model="main.description" />
 	<input type="text" ng-model="main.percentage" />
 	<input type="text" ng-model="main.estimatedCompletionDate" />
+	<input type="text" ng-model="main.name" />
+	<input type="text" ng-model="main.month" />
+	<input type="text" ng-model="main.departmentObjectiveId" />
 	
 	<input type="text" ng-model="main.objectiveId" />
 	<input type="text" ng-model="main.departmentId" />
@@ -47,6 +49,18 @@
 	
 	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
 	<button ng-click="main.putCompanyObjective()">Put Company Objective</button>
+	</div>
+	
+	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
+	<button ng-click="main.putCompany()">Put Company</button>
+	</div>
+	
+	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
+	<button ng-click="main.putDepartmentObjective()">Put Dept Objective</button>
+	</div>
+	
+	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
+	<button ng-click="main.putDepartment()">Put Dept</button>
 	</div>
 	
 	<!--Successfully Tested

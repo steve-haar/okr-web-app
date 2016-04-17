@@ -18,6 +18,9 @@
 			getDepartmentsByCompanyId: getDepartmentsByCompanyId,
 			getAssignments: getAssignments,
 			putCompanyObjective: putCompanyObjective,
+			putCompany: putCompany,
+			putDepartmentObjective: putDepartmentObjective,
+			putDepartment: putDepartment,
 			getObjectiveAssociations: getObjectiveAssociations,
 			getObjectiveAssociationsById: getObjectiveAssociationsById,
 			getObjectiveAssociationsByObjectiveId: getObjectiveAssociationsByObjectiveId,
@@ -185,7 +188,27 @@
 						});
 		}
 		
-
+		function putCompany(updatedObj){
+			return $http.put(baseUrl + '/companies/' + updatedObj.id, updatedObj)
+					.then(function(response){
+						return response.data;
+						});
+		}
+		
+		function putDepartmentObjective(updatedObj){
+			return $http.put(baseUrl + '/department-objectives/' + updatedObj.id, updatedObj)
+					.then(function(response){
+						return response.data;
+						});
+		}
+		
+		function putDepartment(updatedObj){
+			return $http.put(baseUrl + '/departments/' + updatedObj.id, updatedObj)
+					.then(function(response){
+						return response.data;
+						});
+		}
+		
 		//DELETES
 		
 		function deleteObjectiveAssociationsById(id, obj) {
