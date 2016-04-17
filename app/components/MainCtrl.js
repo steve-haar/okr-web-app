@@ -101,15 +101,15 @@
 			//Fields will contain current object values. All values are overwritten.
 			//id may not be changeable.
 			var updatedObj = {
-				companyId: "vm.companyId",
-				company: "vm.company",
-				id: "vm.id",
-				title: "vm.title",
-				description: "vm.description",
-				percentage: "vm.percentage",
-				estimatedCompletionDate: "vm.estimatedCompletionDate",
-				keyResults: "vm.keyResults",
-				objectiveAssociations: "vm.objectiveAssociations"
+				"companyId": vm.companyId,
+				"company": vm.company,
+				"id": vm.id,
+				"title": vm.title,
+				"description": vm.description,
+				"percentage": vm.percentage,
+				"estimatedCompletionDate": vm.estimatedCompletionDate,
+				"keyResults": vm.keyResults,
+				"objectiveAssociations": vm.objectiveAssociations
 			};
 			
 			apiService
