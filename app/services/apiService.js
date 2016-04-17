@@ -43,7 +43,10 @@
 			deleteEmployeeByAllId: deleteEmployeeByAllId,
 			deleteEmployeeByDepartmentId: deleteEmployeeByDepartmentId,
 			deleteDepartmentById: deleteDepartmentById,
-			postCompany: postCompany
+			postCompany: postCompany,
+			postAssignment: postAssignment,
+			postCompanyObjective: postCompanyObjective,
+			getCompanyObjectives: getCompanyObjectives
 		};
 
 		//define functions here
@@ -71,6 +74,12 @@
 		}
 		function getCompanyObjectivesById(id) {
 			return $http.get(baseUrl + '/companies/' + id + '/company-objectives/?include=objectiveAssociations,objectiveAssociations.departmentObjective,objectiveAssociations.departmentObjective.department')
+					.then(function(response) {
+						return response.data;
+					});
+		}
+		function getCompanyObjectives() {
+			return $http.get(baseUrl + '/company-objectives')
 					.then(function(response) {
 						return response.data;
 					});
@@ -188,9 +197,22 @@
 		//POSTS
 		function postCompany(newObj){
 			return $http.post(baseUrl + '/companies', newObj)
-			.then(funtion(response))
+			.then(function(response) {
+				return response.data;
+			})
 		}
-		
+		function postAssignment(newObj){
+			return $http.post(baseUrl + '/companies', newObj)
+			.then(function(response) {
+				return response.data;
+			})
+		}
+		function postCompanyObjective(newObj){
+			return $http.post(baseUrl + '/company-objectives', newObj)
+			.then(function(response) {
+				return response.data;
+			})
+		}
 		//PUTS
 
 		function putCompanyObjective(updatedObj){

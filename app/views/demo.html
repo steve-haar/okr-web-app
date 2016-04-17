@@ -3,23 +3,24 @@
       <md-content layout="column" class="md-padding">
 
 
-	<input type="text" ng-model="main.companyId" />
+	<!--
 	<input type="text" ng-model="main.id" />
 	<input type="text" ng-model="main.title" />
 	<input type="text" ng-model="main.description" />
 	<input type="text" ng-model="main.percentage" />
 	<input type="text" ng-model="main.estimatedCompletionDate" />
 	<input type="text" ng-model="main.name" />
-	<input type="text" ng-model="main.month" />
-	<input type="text" ng-model="main.departmentObjectiveId" />
-	
 	<input type="text" ng-model="main.objectiveId" />
-	<input type="text" ng-model="main.departmentId" />
 	<input type="text" ng-model="main.objectiveAssociationsId" />
-	<input type="text" ng-model="main.employeeId" />
 	<input type="text" ng-model="main.keyResultId" />
 	<input type="text" ng-model="main.companyObjectiveId" />
+	-->
 	
+	<input type="text" ng-model="main.companyObjectiveId" />
+	<input type="text" ng-model="main.companyId" />
+	<input type="text" ng-model="main.title" />
+	<input type="text" ng-model="main.description" />
+	<input type="text" ng-model="main.percentage" />
 	
 	<!-- Successfully Tested
 	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
@@ -44,25 +45,11 @@
 	</div>
 	-->
 	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
-	<button ng-click="main.getKeyResults()">Key Results (All)</button>
+	<button ng-click="main.getCompanyObjectives()">Company Objectives</button>
 	</div>
-	
 	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
-	<button ng-click="main.putCompanyObjective()">Put Company Objective</button>
+	<button ng-click="main.postCompanyObjective()">Post Company Objective</button>
 	</div>
-	
-	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
-	<button ng-click="main.putCompany()">Put Company</button>
-	</div>
-	
-	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
-	<button ng-click="main.putDepartmentObjective()">Put Dept Objective</button>
-	</div>
-	
-	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
-	<button ng-click="main.putDepartment()">Put Dept</button>
-	</div>
-	
 	<!--Successfully Tested
 	</br><strong>Departments and Employees:</strong></br>
 	<div ng-repeat="dept in main.company.departments">
@@ -119,15 +106,14 @@
 		</div>
 	</div>
 	-->
-	<br/><strong>Key Results Output:</strong><br/>
-	<div ng-repeat="keyResult in main.KeyResults">
+	<br/><strong>CO Output:</strong><br/>
+	<div ng-repeat="companyObjectives in main.companyObjectives">
 		<div>
-			<h4>ID: {{keyResult.id}}</h4>
-			<h4>CompanyId: {{keyResult.companyId}}</h4>
-			<h4>CompanyObjectiveId: {{keyResult.companyObjectiveId}}</h4>
-			<h4>deptartmentObjectiveId: {{keyResult.departmentObjectiveId}}</h4>
-			<h4>Title:: {{keyResult.title}}</h4>
-			<h4>Description: {{keyResult.description}}</h4>
+			<h4>ID: {{companyObjectives.id}}</h4>
+			<h4>CompanyId: {{companyObjectives.companyId}}</h4>
+			<h4>Title: {{companyObjectives.title}}</h4>
+			<h4>Description: {{companyObjectives.description}}</h4>
+			<h4>Percentage: {{companyObjectives.percentage}}</h4>
 		</div>
 	</div>
 	

@@ -17,8 +17,6 @@
 		vm.description = "description";
 		vm.percentage = .25;
 		vm.estimatedCompletionDate = "2018-12-10T00:00:00"
-		vm.month = "Month";
-		vm.estimatedCompletionDate = "2018-12-10T00:00:00";
 		vm.name = "(company) Name";
 		vm.employeeId = "Employee Id";
 		vm.departmentId = "Department Id";
@@ -31,6 +29,7 @@
 		vm.companyObjectiveId = "Company Objective Id";
 		vm.month = "Month (int)";
 		vm.departmentObjectiveId = "department objective id";
+		
 		vm.getCompany = getCompany;
 		vm.getDepartments = getDepartments;
 		vm.getCompanyObjectivesById = getCompanyObjectivesById;
@@ -63,7 +62,9 @@
 		vm.deleteDepartmentById = deleteDepartmentById;
 		vm.postCompany = postCompany;
 		vm.getCompanies = getCompanies;
-
+		vm.postAssignment = postAssignment;
+		vm.postCompanyObjective = postCompanyObjective;
+		vm.getCompanyObjectives = getCompanyObjectives;
 
 		//functions can be called above their definition, as shown here
 		//getCompany();
@@ -92,7 +93,13 @@
 					vm.companyObjectives = data;
 				});
 		}
-
+		function getCompanyObjectives(){
+			apiService
+				.getCompanyObjectives()
+				.then(function(data) {
+					vm.companyObjectives = data;
+				});
+		}
 		function getDepartmentObjectivesById(){
 			apiService
 				.getDepartmentObjectivesById(vm.companyId)
@@ -187,7 +194,7 @@
 
 		function postCompany(){
 			var newObj = {
-			"id:": vm.companyId,
+			"id": vm.companyId,
 			"name": vm.name
 			};
 			
@@ -196,8 +203,34 @@
 				.then(function(data) {
 				});
 		}
+		function postAssignment() {
+			var newObj = {
+				"id": vm.assignmentId,
+				"departmentId": vm.departmentId,
+				"companyId": vm.companyId,
+				"departmentObjectiveId": vm.departmentObjectiveId,
+				"employeeId": vm.employeeId,
+				"month": vm.month
+			};
+			apiService
+				.postAssignment(newObj)
+				.then(function(data) {
+				});
+		}
 		
-		
+		function postCompanyObjective() {
+			var newObj = {
+				"companyId": vm.companyId,
+				"id": vm.companyObjectiveId,
+				"title": vm.title,
+				"description": vm.description,
+				"percentage": vm.percentage
+			};
+			apiService
+				.postCompanyObjective(newObj)
+				.then(function(data) {
+				});
+		}
 		
 		
 		
@@ -250,7 +283,7 @@
 					vm.Employee = data;
 				})
 		}
-
+		
 		function getKeyResults(){
 			apiService
 				.getKeyResults()
