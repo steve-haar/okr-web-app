@@ -16,8 +16,12 @@
 			getCompanyObjectivesById: getCompanyObjectivesById,
 			getDepartmentObjectivesById: getDepartmentObjectivesById,
 			getDepartmentsByCompanyId: getDepartmentsByCompanyId,
+			getDepartmentById: getDepartmentById,
 			getAssignments: getAssignments,
 			putCompanyObjective: putCompanyObjective,
+			putCompany: putCompany,
+			putDepartmentObjective: putDepartmentObjective,
+			putDepartment: putDepartment,
 			getObjectiveAssociations: getObjectiveAssociations,
 			getObjectiveAssociationsById: getObjectiveAssociationsById,
 			getObjectiveAssociationsByObjectiveId: getObjectiveAssociationsByObjectiveId,
@@ -40,7 +44,6 @@
 			deleteEmployeeByDepartmentId: deleteEmployeeByDepartmentId,
 			deleteDepartmentById: deleteDepartmentById,
 			postCompany: postCompany
-			
 		};
 
 		//define functions here
@@ -54,6 +57,7 @@
 					});
 		}
 		function getCompany(id, includes) {
+			if (includes === undefined) includes = '';
 			return $http.get(baseUrl + '/companies/' + id + '?include=' + includes)
 					.then(function(response) {
 						return response.data;
@@ -66,17 +70,25 @@
 					});
 		}
 		function getCompanyObjectivesById(id) {
-			return $http.get(baseUrl + '/companies/' + id + '/company-objectives/?include=objectiveAssociations,objectiveAssociations.departmentObjective')
+			return $http.get(baseUrl + '/companies/' + id + '/company-objectives/?include=objectiveAssociations,objectiveAssociations.departmentObjective,objectiveAssociations.departmentObjective.department')
 					.then(function(response) {
 						return response.data;
 					});
 		}
-		function getDepartmentObjectivesById(id){
-			return $http.get(baseUrl + '/companies/' + id + '/department-objectives')
+		function getDepartmentObjectivesById(companyId, departmentId){
+			return $http.get(baseUrl + '/companies/' + companyId + '/departments/' + departmentId + '/department-objectives?include=keyResults')
 					.then(function(response) {
 						return response.data;
 					});
 		}
+
+		function getDepartmentById(companyId, departmentId){
+			return $http.get(baseUrl + '/companies/' + companyId + '/departments/' + departmentId)
+					.then(function(response) {
+						return response.data;
+					});
+		}
+
 		function getDepartmentsByCompanyId(id){
 			return $http.get(baseUrl + '/companies/' + id + '/departments')
 					.then(function(response){
@@ -127,8 +139,8 @@
 				return response.data;
 			});
 		}
-		*/ 
-		
+		*/
+
 		function getObjectiveAssociationsById(id) {
 			return $http.get(baseUrl + '/companies/' + id + '/objective-associations')
 			.then(function(response) {
@@ -171,14 +183,13 @@
 				return response.data;
 			})
 		}
-		
-		
+
+
 		//POSTS
 		function postCompany(newObj){
 			return $http.post(baseUrl + '/companies', newObj)
 			.then(funtion(response))
 		}
-		
 		
 		//PUTS
 
@@ -189,9 +200,29 @@
 						});
 		}
 		
+		function putCompany(updatedObj){
+			return $http.put(baseUrl + '/companies/' + updatedObj.id, updatedObj)
+					.then(function(response){
+						return response.data;
+						});
+		}
+		
+		function putDepartmentObjective(updatedObj){
+			return $http.put(baseUrl + '/department-objectives/' + updatedObj.id, updatedObj)
+					.then(function(response){
+						return response.data;
+						});
+		}
+		
+		function putDepartment(updatedObj){
+			return $http.put(baseUrl + '/departments/' + updatedObj.id, updatedObj)
+					.then(function(response){
+						return response.data;
+						});
+		}
 
 		//DELETES
-		
+
 		function deleteObjectiveAssociationsById(id, obj) {
 			return $http.delete(baseUrl + '/companies/' + id + '/objective-associations/' + obj)
 			.then(function(response) {
@@ -241,4 +272,4 @@
 			})
 		}
 	}
-}());
+}

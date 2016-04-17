@@ -13,12 +13,13 @@
 		vm.companyId = "Company Id";
 		vm.id = "id";
 		vm.title = "Title";
-		vm.name = "name"
+		vm.name = "name";
 		vm.description = "description";
 		vm.percentage = .25;
 		vm.estimatedCompletionDate = "2018-12-10T00:00:00"
-		vm.month = "Month"
-		
+		vm.month = "Month";
+		vm.estimatedCompletionDate = "2018-12-10T00:00:00";
+		vm.name = "(company) Name";
 		vm.employeeId = "Employee Id";
 		vm.departmentId = "Department Id";
 		vm.objectiveAssociationsId = "Obj Associations Id";
@@ -26,13 +27,15 @@
 		vm.keyResultId = "Key Result Id";
 		vm.companyObjectiveId = "Company Objective Id"
 		vm.departmentObjectiveId = "Department Objective Id"
-		vm.assignmentId = "Assignment Id"
+		vm.assignmentId = "Assignment Id";
+		vm.companyObjectiveId = "Company Objective Id";
+		vm.month = "Month (int)";
+		vm.departmentObjectiveId = "department objective id";
 		vm.getCompany = getCompany;
 		vm.getDepartments = getDepartments;
 		vm.getCompanyObjectivesById = getCompanyObjectivesById;
 		vm.getDepartmentObjectivesById = getDepartmentObjectivesById;
 		vm.getAssignments = getAssignments;
-		vm.putCompanyObjective = putCompanyObjective;
 		vm.getObjectiveAssociationsById = getObjectiveAssociationsById;
 		vm.getObjectiveAssociations = getObjectiveAssociations;
 		vm.getObjectiveAssociationsByObjectiveId = getObjectiveAssociationsByObjectiveId;
@@ -46,6 +49,10 @@
 		//vm.getKeyResultsByCompanyIDCompanyObjIDKeyID = getKeyResultsByCompanyIDCompanyObjIDKeyID;
 		//vm.getKeyResultsByCompanyIDDeptID = getKeyResultsByCompanyIDDeptID;
 		//vm.getKeyResultsByCompanyIDDeptIDKeyID = getKeyResultsByCompanyIDDeptIDKeyID;
+		vm.putCompany = putCompany;
+		vm.putCompanyObjective = putCompanyObjective;
+		vm.putDepartmentObjective = putDepartmentObjective;
+		vm.putDepartment = putDepartment;
 		vm.deleteObjectiveAssociationsById = deleteObjectiveAssociationsById;
 		vm.deleteObjectiveAssociationsByObjectiveAssociationId = deleteObjectiveAssociationsByObjectiveAssociationId;
 		vm.deleteCompanyById = deleteCompanyById;
@@ -111,8 +118,6 @@
 		}
 
 		function putCompanyObjective(){
-			//Fields will contain current object values. All values are overwritten.
-			//id may not be changeable.
 			var updatedObj = {
 				"companyId": vm.companyId,
 				"company": vm.company,
@@ -127,6 +132,55 @@
 			
 			apiService
 				.putCompanyObjective(updatedObj)
+				.then(function(data) {
+				});
+		}
+		
+		function putCompany(){
+			var updatedObj = {
+				"id": vm.id,
+				"name": vm.name
+			};
+			
+			apiService
+				.putCompany(updatedObj)
+				.then(function(data) {
+				});
+		}
+		
+		function putDepartmentObjective(){
+			var updatedObj = {
+				"companyId": vm.companyId,
+				"departmentId": vm.departmentId,
+				"department": vm.department,
+				"assignments": vm.assignments,
+				"id": vm.id,
+				"title": vm.title,
+				"description": vm.description,
+				"percentage": vm.percentage,
+				"estimatedCompletionDate": vm.estimatedCompletionDate,
+				"keyResults": vm.keyResults,
+				"objectiveAssociations": vm.objectiveAssociations
+			};
+			
+			apiService
+				.putDepartmentObjective(updatedObj)
+				.then(function(data) {
+				});
+		}
+		
+		function putDepartment(){
+			var updatedObj = {
+				"id": vm.id,
+				"companyId": vm.companyId,
+				"name": vm.name,
+				"company": vm.company,
+				"employees": vm.employees,
+				"departmentObjectives": vm.departmentObjectives
+			};
+			
+			apiService
+				.putDepartment(updatedObj)
 				.then(function(data) {
 				});
 		}
@@ -170,39 +224,39 @@
 		}
 		function getEmployeesByDepartment() {
 			apiService
-			.getEmployeesByDepartment
-			.then(function(data) {
-				vm.Employee = data;
-			})
+				.getEmployeesByDepartment
+				.then(function(data) {
+					vm.Employee = data;
+				})
 		}
 		function getEmployeesByDepartmentAndId() {
-				apiService
-			.getEmployeesByDepartmentAndId
-			.then(function(data) {
-				vm.Employee = data;
-			})
+			apiService
+				.getEmployeesByDepartmentAndId
+				.then(function(data) {
+					vm.Employee = data;
+				})
 		}
 		function getEmployees() {
-				apiService
-			.getEmployees
-			.then(function(data) {
-				vm.Employee = data;
-			})
+			apiService
+				.getEmployees
+				.then(function(data) {
+					vm.Employee = data;
+				})
 		}
 		function getEmployeeById() {
-				apiService
-			.getEmployeeById
-			.then(function(data) {
-				vm.Employee = data;
-			})
+			apiService
+				.getEmployeeById
+				.then(function(data) {
+					vm.Employee = data;
+				})
 		}
 
-			function getKeyResults(){
+		function getKeyResults(){
 			apiService
 				.getKeyResults()
 				.then(function(data){
 					vm.KeyResults = data;
-			});
+				});
 		}
 				function getKeyResultsByID(){
 			apiService
@@ -259,15 +313,15 @@
 		}
 		function deleteEmployeeById() {
 			apiService
-			.deleteEmployeeById(vm.employeeId);
+				.deleteEmployeeById(vm.employeeId);
 		}
 		function deleteEmployeeByAllId() {
 			apiService
-			.deleteEmployeeByAllId(vm.companyId, vm.departmentId, vm.employeeId);
+				.deleteEmployeeByAllId(vm.companyId, vm.departmentId, vm.employeeId);
 		}
 		function deleteEmployeesByDepartment() {
 			apiService
-			.deleteEmployeesByDepartment(vm.companyId, vm.departmentId);
+				.deleteEmployeesByDepartment(vm.companyId, vm.departmentId);
 		}
 		function deleteDepartmentById(){
 			apiService

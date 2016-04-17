@@ -16,9 +16,15 @@ angular.module('app', [
 		controllerAs: 'vm'
 	})
 
-	.when('/company-objectives', {
+	.when('/companies/:companyId', {
 		templateUrl: 'app/views/company-objectives.html',
 		controller: 'CompanyObjectivesCtrl',
+		controllerAs: 'vm'
+	})
+
+	.when('/departments/:departmentId', {
+		templateUrl: 'app/views/department-objectives.html',
+		controller: 'DepartmentObjectivesCtrl',
 		controllerAs: 'vm'
 	})
 
@@ -27,7 +33,7 @@ angular.module('app', [
 		controller: 'MainCtrl',
 		controllerAs: 'main'
 	})
-	
+
 	.otherwise({
 		redirectTo: '/login'
 	});
