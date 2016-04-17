@@ -26,7 +26,7 @@
         }
 
         if (!employeeExists) vm.error = 'Invalid email address.';
-        else $location.path("/company-objectives");
+        else $location.path("/companies/1");
       });
     }
 

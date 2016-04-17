@@ -8,7 +8,7 @@
   function CompanyObjectivesCtrl($location, apiService) {
     var vm = this;
 
-    vm.companyId = '1';
+    vm.companyId = 1;
     vm.companyObjectives = {};
     vm.companyDepartments = {};
 
@@ -26,7 +26,7 @@
 
     function getCompanyDepartmentsById(id){
       apiService
-        .getDepartmentsByCompanyId(id)
+        .getDepartmentObjectivesById(id)
         .then(function(data) {
           vm.companyDepartments = data;
           console.log(data);
