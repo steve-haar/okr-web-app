@@ -3,7 +3,7 @@
     <md-toolbar>
       <div class="md-toolbar-tools">
         <h2>
-          <span>{{ department.name }} Objectives</span>
+          <span>{{ vm.department.name }} Department Objectives</span>
         </h2>
         <span flex></span>
         <md-button class="md-button" aria-label="Department View">
@@ -12,26 +12,29 @@
       </div>
     </md-toolbar>
     <md-content layout="column" class="md-padding">
-      <div>
+      <div ng-repeat="obj in vm.departmentObjectives">
         <div layout="column" class="objective-box md-whiteframe-z1">
           <md-toolbar class="md-accent">
             <div class="md-toolbar-tools">
-              <h2><span>Department Objective</span></h2>
+              <h2><span>{{ obj.title }}</span></h2>
               <span flex></span>
-              <span>x% Complete</span>
+              <span>{{ obj.percentage * 100 }}% Complete</span>
             </div>
           </md-toolbar>
           <div class="progress-container">
-            <md-progress-linear md-mode="determinate" value="50"></md-progress-linear>
+            <md-progress-linear md-mode="determinate" value="{{ obj.percentage * 100 }}"></md-progress-linear>
             <!--<md-tooltip md-direction="bottom">
               {{obj.percentage}}% Complete
             </md-tooltip>-->
           </div>
           <md-content layout="column" class="md-padding">
-            <p><em>Description goes here. </em></p>
+            <p><em>{{ obj.description }}</em></p>
             <ul>
+              <li ng-repeat="keyResult in obj.keyResults">
+                {{ keyResult.title }}
+              </li>
               <li>
-                Key Result 1 - x% Complete
+                Add Key Result
               </li>
             </ul>
           </md-content>

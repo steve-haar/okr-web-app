@@ -54,6 +54,7 @@
 					});
 		}
 		function getCompany(id, includes) {
+			if (includes === undefined) includes = '';
 			return $http.get(baseUrl + '/companies/' + id + '?include=' + includes)
 					.then(function(response) {
 						return response.data;

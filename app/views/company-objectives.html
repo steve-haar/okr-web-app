@@ -3,7 +3,7 @@
     <md-toolbar>
       <div class="md-toolbar-tools">
         <h2>
-          <span>Company Objectives</span>
+          <span>{{ vm.company.name }} Company Objectives</span>
         </h2>
         <span flex></span>
         <md-button class="md-button" aria-label="Department View">
@@ -28,12 +28,11 @@
             </md-tooltip>-->
           </div>
           <md-content layout="column" class="md-padding">
-            <p><em>Description goes here. {{obj.description}}</em></p>
+            <p><em>{{obj.description}}</em></p>
             <ul>
-              <li ng-repeat="objectiveAssociation in obj.objectiveAssociations" style="">
+              <li ng-repeat="objectiveAssociation in obj.objectiveAssociations">
                 <span>{{ objectiveAssociation.departmentObjective.title }} - {{ objectiveAssociation.departmentObjective.percentage *100}}% Complete</span>
-                <span flex>
-                <span><a href="#/departments/{{ objectiveAssociation.departmentId }}">{{ objectiveAssociation.departmentObjective.department.name }}</a></span>
+                <span style="float:right"><a href="#/departments/{{ objectiveAssociation.departmentId }}">{{ objectiveAssociation.departmentObjective.department.name }} Department</a></span>
               </li>
             </ul>
           </md-content>
