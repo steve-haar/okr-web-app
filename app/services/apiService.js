@@ -22,6 +22,8 @@
 			putCompany: putCompany,
 			putDepartmentObjective: putDepartmentObjective,
 			putDepartment: putDepartment,
+			putEmployee: putEmployee,
+			putKeyResult: putKeyResult,
 			getObjectiveAssociations: getObjectiveAssociations,
 			getObjectiveAssociationsById: getObjectiveAssociationsById,
 			getObjectiveAssociationsByObjectiveId: getObjectiveAssociationsByObjectiveId,
@@ -43,7 +45,10 @@
 			deleteEmployeeByAllId: deleteEmployeeByAllId,
 			deleteEmployeeByDepartmentId: deleteEmployeeByDepartmentId,
 			deleteDepartmentById: deleteDepartmentById,
-			postCompany: postCompany
+			postCompany: postCompany,
+			postAssignment: postAssignment,
+			postCompanyObjective: postCompanyObjective,
+			getCompanyObjectives: getCompanyObjectives
 		};
 
 		//define functions here
@@ -71,6 +76,12 @@
 		}
 		function getCompanyObjectivesById(id) {
 			return $http.get(baseUrl + '/companies/' + id + '/company-objectives/?include=objectiveAssociations,objectiveAssociations.departmentObjective,objectiveAssociations.departmentObjective.department')
+					.then(function(response) {
+						return response.data;
+					});
+		}
+		function getCompanyObjectives() {
+			return $http.get(baseUrl + '/company-objectives')
 					.then(function(response) {
 						return response.data;
 					});
@@ -196,11 +207,24 @@
 		function postCreateCompanyObjective(companyId, data)
 		{
 			return $http.post(baseUrl + '/companies/' + companyId + '/company-objectives', data)
-			.then(function(response){
+			.then(function(response) {
 				return response.data;
-			});
+			})
 		}
 
+		function postAssignment(newObj){
+			return $http.post(baseUrl + '/companies', newObj)
+			.then(function(response) {
+				return response.data;
+			})
+		}
+
+		function postCompanyObjective(newObj){
+			return $http.post(baseUrl + '/company-objectives', newObj)
+			.then(function(response) {
+				return response.data;
+			})
+		}
 		//PUTS
 
 		function putCompanyObjective(updatedObj){
@@ -226,6 +250,20 @@
 
 		function putDepartment(updatedObj){
 			return $http.put(baseUrl + '/departments/' + updatedObj.id, updatedObj)
+					.then(function(response){
+						return response.data;
+						});
+		}
+
+		function putEmployee(updatedObj){
+			return $http.put(baseUrl + '/employees/' + updatedObj.id, updatedObj)
+					.then(function(response){
+						return response.data;
+						});
+		}
+
+		function putKeyResult(updatedObj){
+			return $http.put(baseUrl + '/key-results/' + updatedObj.id, updatedObj)
 					.then(function(response){
 						return response.data;
 						});

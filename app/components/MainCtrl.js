@@ -10,6 +10,7 @@
 
 		//add functions here to be used
 		//vm.company = {};
+		/*
 		vm.companyId = "Company Id";
 		vm.id = "id";
 		vm.title = "Title";
@@ -17,8 +18,6 @@
 		vm.description = "description";
 		vm.percentage = .25;
 		vm.estimatedCompletionDate = "2018-12-10T00:00:00"
-		vm.month = "Month";
-		vm.estimatedCompletionDate = "2018-12-10T00:00:00";
 		vm.name = "(company) Name";
 		vm.employeeId = "Employee Id";
 		vm.departmentId = "Department Id";
@@ -31,6 +30,11 @@
 		vm.companyObjectiveId = "Company Objective Id";
 		vm.month = "Month (int)";
 		vm.departmentObjectiveId = "department objective id";
+		vm.firstName = "first name";
+		vm.lastName = "last name";
+		vm.email = "email@address.com";
+		*/
+
 		vm.getCompany = getCompany;
 		vm.getDepartments = getDepartments;
 		vm.getCompanyObjectivesById = getCompanyObjectivesById;
@@ -53,6 +57,8 @@
 		vm.putCompanyObjective = putCompanyObjective;
 		vm.putDepartmentObjective = putDepartmentObjective;
 		vm.putDepartment = putDepartment;
+		vm.putEmployee = putEmployee;
+		vm.putKeyResult = putKeyResult;
 		vm.deleteObjectiveAssociationsById = deleteObjectiveAssociationsById;
 		vm.deleteObjectiveAssociationsByObjectiveAssociationId = deleteObjectiveAssociationsByObjectiveAssociationId;
 		vm.deleteCompanyById = deleteCompanyById;
@@ -63,7 +69,9 @@
 		vm.deleteDepartmentById = deleteDepartmentById;
 		vm.postCompany = postCompany;
 		vm.getCompanies = getCompanies;
-
+		vm.postAssignment = postAssignment;
+		vm.postCompanyObjective = postCompanyObjective;
+		vm.getCompanyObjectives = getCompanyObjectives;
 
 		//functions can be called above their definition, as shown here
 		//getCompany();
@@ -92,7 +100,13 @@
 					vm.companyObjectives = data;
 				});
 		}
-
+		function getCompanyObjectives(){
+			apiService
+				.getCompanyObjectives()
+				.then(function(data) {
+					vm.companyObjectives = data;
+				});
+		}
 		function getDepartmentObjectivesById(){
 			apiService
 				.getDepartmentObjectivesById(vm.companyId)
@@ -185,9 +199,27 @@
 				});
 		}
 
+		function putEmployee(){
+			var updatedObj = {
+				"id": vm.id,
+				"companyId": vm.companyId,
+				"departmentId": vm.departmentId,
+				"firstName": vm.firstName,
+				"lastName": vm.lastName,
+				"emailAddress": vm.email,
+				"department": vm.department,
+				"assignments": vm.assignments
+			};
+			
+			apiService
+				.putEmployee(updatedObj)
+				.then(function(data) {
+				});
+		}
+
 		function postCompany(){
 			var newObj = {
-			"id:": vm.companyId,
+			"id": vm.companyId,
 			"name": vm.name
 			};
 			
@@ -196,11 +228,54 @@
 				.then(function(data) {
 				});
 		}
+		function postAssignment() {
+			var newObj = {
+				"id": vm.assignmentId,
+				"departmentId": vm.departmentId,
+				"companyId": vm.companyId,
+				"departmentObjectiveId": vm.departmentObjectiveId,
+				"employeeId": vm.employeeId,
+				"month": vm.month
+			};
+			apiService
+				.postAssignment(newObj)
+				.then(function(data) {
+				});
+		}
 		
-		
-		
-		
-		
+
+		function postCompanyObjective() {
+			var newObj = {
+				"companyId": vm.companyId,
+				"id": vm.companyObjectiveId,
+				"title": vm.title,
+				"description": vm.description,
+				"percentage": vm.percentage
+			};
+			apiService
+				.postCompanyObjective(newObj)
+				.then(function(data) {
+				});
+		}
+
+		function putKeyResult(){
+			var updatedObj = {
+				"id": vm.id,
+				"companyId": vm.companyId,
+				"departmentId": vm.departmentId,
+				"companyObjectiveId": vm.companyObjectiveId,
+				"departmentObjectiveId": vm.departmentObjectiveId,
+				"title": vm.title,
+				"companyObjective": vm.companyObjective,
+				"departmentObjective": vm.departmentObjective
+			};
+			
+			apiService
+				.putKeyResult(updatedObj)
+				.then(function(data) {
+				});
+		}
+
 		function getObjectiveAssociationsById(){
 			apiService
 				.getObjectiveAssociationsById(vm.companyId)
@@ -250,7 +325,7 @@
 					vm.Employee = data;
 				})
 		}
-
+		
 		function getKeyResults(){
 			apiService
 				.getKeyResults()
