@@ -27,10 +27,10 @@
 			getEmployeeById: getEmployeeById,
 			getKeyResults: getKeyResults,
 			getKeyResultsByID: getKeyResultsByID,
-			getKeyResultsByCompanyIDCompanyObjID: getKeyResultsByCompanyIDCompanyObjID,
-			getKeyResultsByCompanyIDCompanyObjIDKeyID: getKeyResultsByCompanyIDCompanyObjIDKeyID,
-			getKeyResultsByCompanyIDDeptID: getKeyResultsByCompanyIDDeptID,
-			getKeyResultsByCompanyIDDeptIDKeyID: getKeyResultsByCompanyIDDeptIDKeyID,
+			//getKeyResultsByCompanyIDCompanyObjID: getKeyResultsByCompanyIDCompanyObjID,
+			//getKeyResultsByCompanyIDCompanyObjIDKeyID: getKeyResultsByCompanyIDCompanyObjIDKeyID,
+			//getKeyResultsByCompanyIDDeptID: getKeyResultsByCompanyIDDeptID,
+			//getKeyResultsByCompanyIDDeptIDKeyID: getKeyResultsByCompanyIDDeptIDKeyID,
 			deleteObjectiveAssociationsById: deleteObjectiveAssociationsById,
 			deleteObjectiveAssociationsByObjectiveAssociationId: deleteObjectiveAssociationsByObjectiveAssociationId,
 			deleteCompanyById: deleteCompanyById,
@@ -101,7 +101,8 @@
 				});
 		}
 
-				function getKeyResultsByCompanyIDCompanyObjID(companyId,companyObjectiveId){
+		/* This functionality has been removed from the API
+			function getKeyResultsByCompanyIDCompanyObjID(companyId,companyObjectiveId){
 			return $http.get(baseUrl+'/companies/'+companyId+'/companyObjectives/'+companyObjectiveId+'/key-results')
 			.then(function(response){
 				return response.data;
@@ -125,6 +126,8 @@
 				return response.data;
 			});
 		}
+		*/ 
+		
 		function getObjectiveAssociationsById(id) {
 			return $http.get(baseUrl + '/companies/' + id + '/objective-associations')
 			.then(function(response) {

@@ -3,48 +3,53 @@
       <md-content layout="column" class="md-padding">
 
 
-	<label>Name: </label><span>{{main.company.name}}</span>
-	<br />
-
-
+	Posting Company Objectives Test Boxes
 	<input type="text" ng-model="main.companyId" />
+	<input type="text" ng-model="main.id" />
+	<input type="text" ng-model="main.title" />
+	<input type="text" ng-model="main.description" />
+	<input type="text" ng-model="main.percentage" />
+	<input type="text" ng-model="main.estimatedCompletionDate" />
+	
 	<input type="text" ng-model="main.objectiveId" />
 	<input type="text" ng-model="main.departmentId" />
 	<input type="text" ng-model="main.objectiveAssociationsId" />
 	<input type="text" ng-model="main.employeeId" />
 	<input type="text" ng-model="main.keyResultId" />
 	<input type="text" ng-model="main.companyObjectiveId" />
-
-	</br>Test calls by Company Id:
-
+	
+	
+	<!-- Successfully Tested
 	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
-
 	<button ng-click="main.getCompany()">Departments and Employees</button>
 	<button ng-click="main.getCompanyObjectivesById()">Objectives</button>
 	<button ng-click="main.getDepartmentObjectivesById()">Dept Objectives</button>
 	<button ng-click="main.getDepartments()">Departments</button>
 	</div>
-
+	
 	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
 	<button ng-click="main.getAssignments()">All Assignments</button>
 	<button ng-click="main.getObjectiveAssociationsById()">All Obj Associations</button>
 	<button ng-click="main.deleteObjectiveAssociationsById()">Delete Obj Association</button>
 	<button ng-click="main.deleteObjectiveAssociationsByObjectiveAssociationId()">Delete Obj Association (ID)</button>
 	</div>
-
+	
 	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
 	<button ng-click="main.deleteEmployeeById()">Delete Employee</button>
 	<button ng-click="main.deleteCompanyById()">Delete Company by Id</button>
 	<button ng-click="main.deleteCompanyObjectivesById()">Delete OBJ by CoId/objId</button>
 	<button ng-click="main.deleteDepartmentById()">Delete dept my CoId/deptId</button>
 	</div>
-
+	-->
 	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
 	<button ng-click="main.getKeyResults()">Key Results (All)</button>
-	<button ng-click="main.getKeyResultsById()">Key Results (KRId)</button>
-	<button ng-click="main.getKeyResultsByCompanyIDCompanyObjID()">Key Results (CoId)</button>
 	</div>
-
+	
+	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
+	<button ng-click="main.putCompanyObjective()">Put Company Objective</button>
+	</div>
+	
+	<!--Successfully Tested
 	</br><strong>Departments and Employees:</strong></br>
 	<div ng-repeat="dept in main.company.departments">
 		<div><b>{{dept.name}}</b></div>
@@ -99,7 +104,7 @@
 			<h4>departmentObjectiveId: {{objective.departmentObjectiveId}}</h4>
 		</div>
 	</div>
-
+	-->
 	<br/><strong>Key Results Output:</strong><br/>
 	<div ng-repeat="keyResult in main.KeyResults">
 		<div>

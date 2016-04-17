@@ -9,15 +9,21 @@
         var vm = this;
 
 		//add functions here to be used
-		vm.company = {};
+		//vm.company = {};
 		vm.companyId = "Company Id";
+		vm.id = "id";
+		vm.title = "Title";
+		vm.description = "description";
+		vm.percentage = .25;
+		vm.estimatedCompletionDate = "2018-12-10T00:00:00"
+		
 		vm.employeeId = "Employee Id";
 		vm.departmentId = "Department Id";
 		vm.objectiveAssociationsId = "Obj Associations Id";
 		vm.objectiveId = "Objective Id";
 		vm.keyResultId = "Key Result Id";
 		vm.companyObjectiveId = "Company Objective Id"
-    vm.getCompany = getCompany;
+		vm.getCompany = getCompany;
 		vm.getDepartments = getDepartments;
 		vm.getCompanyObjectivesById = getCompanyObjectivesById;
 		vm.getDepartmentObjectivesById = getDepartmentObjectivesById;
@@ -32,10 +38,10 @@
 		vm.getEmployeeById = getEmployeeById;
 		vm.getKeyResults = getKeyResults;
 		vm.getKeyResultsByID = getKeyResultsByID;
-		vm.getKeyResultsByCompanyIDCompanyObjID = getKeyResultsByCompanyIDCompanyObjID;
-		vm.getKeyResultsByCompanyIDCompanyObjIDKeyID = getKeyResultsByCompanyIDCompanyObjIDKeyID;
-		vm.getKeyResultsByCompanyIDDeptID = getKeyResultsByCompanyIDDeptID;
-		vm.getKeyResultsByCompanyIDDeptIDKeyID = getKeyResultsByCompanyIDDeptIDKeyID;
+		//vm.getKeyResultsByCompanyIDCompanyObjID = getKeyResultsByCompanyIDCompanyObjID;
+		//vm.getKeyResultsByCompanyIDCompanyObjIDKeyID = getKeyResultsByCompanyIDCompanyObjIDKeyID;
+		//vm.getKeyResultsByCompanyIDDeptID = getKeyResultsByCompanyIDDeptID;
+		//vm.getKeyResultsByCompanyIDDeptIDKeyID = getKeyResultsByCompanyIDDeptIDKeyID;
 		vm.deleteObjectiveAssociationsById = deleteObjectiveAssociationsById;
 		vm.deleteObjectiveAssociationsByObjectiveAssociationId = deleteObjectiveAssociationsByObjectiveAssociationId;
 		vm.deleteCompanyById = deleteCompanyById;

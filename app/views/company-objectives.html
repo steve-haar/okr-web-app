@@ -18,27 +18,28 @@
             <div class="md-toolbar-tools">
               <h2><span>{{obj.id}} | {{obj.title}}</span></h2>
               <span flex></span>
-              <span>{{obj.percentage}}% Complete</span>
+              <span>{{obj.percentage * 100}}% Complete</span>
             </div>
           </md-toolbar>
           <div class="progress-container">
-            <md-progress-linear md-mode="determinate" value="{{ obj.percentage }}"></md-progress-linear>
+            <md-progress-linear md-mode="determinate" value="{{ obj.percentage *100}}"></md-progress-linear>
             <!--<md-tooltip md-direction="bottom">
-              {{obj.percentage}}% Complete
+              {{obj.percentage * 100}}% Complete
             </md-tooltip>-->
           </div>
           <md-content layout="column" class="md-padding">
             <p><em>Description goes here. {{obj.description}}</em></p>
             <ul>
               <li ng-repeat="objectiveAssociation in obj.objectiveAssociations" style="">
-                {{ objectiveAssociation.departmentObjective.title }} - {{ objectiveAssociation.departmentObjective.percentage }}% Complete
+                {{ objectiveAssociation.departmentObjective.title }} - {{ objectiveAssociation.departmentObjective.percentage *100}}% Complete
               </li>
             </ul>
           </md-content>
           <md-card-actions layout="row">
             <span flex></span>
-            <md-button>Action 1</md-button>
-            <md-button>Action 2</md-button>
+            <md-button>Add</md-button>
+            <md-button>Edit</md-button>
+			<md-button>Delete</md-button>
           </md-card-actions>
         </div>
       </div>
