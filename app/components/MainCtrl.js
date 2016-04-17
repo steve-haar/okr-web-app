@@ -13,9 +13,11 @@
 		vm.companyId = "Company Id";
 		vm.id = "id";
 		vm.title = "Title";
+		vm.name = "name"
 		vm.description = "description";
 		vm.percentage = .25;
 		vm.estimatedCompletionDate = "2018-12-10T00:00:00"
+		vm.month = "Month"
 		
 		vm.employeeId = "Employee Id";
 		vm.departmentId = "Department Id";
@@ -23,6 +25,8 @@
 		vm.objectiveId = "Objective Id";
 		vm.keyResultId = "Key Result Id";
 		vm.companyObjectiveId = "Company Objective Id"
+		vm.departmentObjectiveId = "Department Objective Id"
+		vm.assignmentId = "Assignment Id"
 		vm.getCompany = getCompany;
 		vm.getDepartments = getDepartments;
 		vm.getCompanyObjectivesById = getCompanyObjectivesById;
@@ -50,6 +54,8 @@
 		vm.deleteEmployeeByAllId = deleteEmployeeByAllId;
 		vm.deleteEmployeesByDepartment = deleteEmployeesByDepartment;
 		vm.deleteDepartmentById = deleteDepartmentById;
+		vm.postCompany = postCompany;
+		vm.getCompanies = getCompanies;
 
 
 		//functions can be called above their definition, as shown here
@@ -64,7 +70,14 @@
 					vm.company = data;
 				});
 		}
-
+		function getCompanies() {
+			apiService
+			.getCompanies()
+			.then(function(data) {
+				vm.company = data;
+			
+			});
+		}
 		function getCompanyObjectivesById(){
 			apiService
 				.getCompanyObjectivesById(vm.companyId)
@@ -118,6 +131,22 @@
 				});
 		}
 
+		function postCompany(){
+			var newObj = {
+			"id:": vm.companyId,
+			"name": vm.name
+			};
+			
+			apiService
+				.postCompany(newObj)
+				.then(function(data) {
+				});
+		}
+		
+		
+		
+		
+		
 		function getObjectiveAssociationsById(){
 			apiService
 				.getObjectiveAssociationsById(vm.companyId)

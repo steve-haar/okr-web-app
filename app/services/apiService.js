@@ -39,6 +39,7 @@
 			deleteEmployeeByAllId: deleteEmployeeByAllId,
 			deleteEmployeeByDepartmentId: deleteEmployeeByDepartmentId,
 			deleteDepartmentById: deleteDepartmentById,
+			postCompany: postCompany
 			
 		};
 
@@ -173,7 +174,10 @@
 		
 		
 		//POSTS
-
+		function postCompany(newObj){
+			return $http.post(baseUrl + '/companies', newObj)
+			.then(funtion(response))
+		}
 		
 		
 		//PUTS
