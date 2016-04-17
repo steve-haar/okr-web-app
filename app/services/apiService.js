@@ -22,6 +22,8 @@
 			putCompany: putCompany,
 			putDepartmentObjective: putDepartmentObjective,
 			putDepartment: putDepartment,
+			putEmployee: putEmployee,
+			putKeyResult: putKeyResult,
 			getObjectiveAssociations: getObjectiveAssociations,
 			getObjectiveAssociationsById: getObjectiveAssociationsById,
 			getObjectiveAssociationsByObjectiveId: getObjectiveAssociationsByObjectiveId,
@@ -214,6 +216,20 @@
 		
 		function putDepartment(updatedObj){
 			return $http.put(baseUrl + '/departments/' + updatedObj.id, updatedObj)
+					.then(function(response){
+						return response.data;
+						});
+		}
+		
+		function putEmployee(updatedObj){
+			return $http.put(baseUrl + '/employees/' + updatedObj.id, updatedObj)
+					.then(function(response){
+						return response.data;
+						});
+		}
+		
+		function putKeyResult(updatedObj){
+			return $http.put(baseUrl + '/key-results/' + updatedObj.id, updatedObj)
 					.then(function(response){
 						return response.data;
 						});

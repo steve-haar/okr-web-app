@@ -10,6 +10,7 @@
 
 		//add functions here to be used
 		//vm.company = {};
+		/*
 		vm.companyId = "Company Id";
 		vm.id = "id";
 		vm.title = "Title";
@@ -25,6 +26,10 @@
 		vm.companyObjectiveId = "Company Objective Id";
 		vm.month = "Month (int)";
 		vm.departmentObjectiveId = "department objective id";
+		vm.firstName = "first name";
+		vm.lastName = "last name";
+		vm.email = "email@address.com";
+		*/
 		vm.getCompany = getCompany;
 		vm.getDepartments = getDepartments;
 		vm.getCompanyObjectivesById = getCompanyObjectivesById;
@@ -47,6 +52,8 @@
 		vm.putCompanyObjective = putCompanyObjective;
 		vm.putDepartmentObjective = putDepartmentObjective;
 		vm.putDepartment = putDepartment;
+		vm.putEmployee = putEmployee;
+		vm.putKeyResult = putKeyResult;
 		vm.deleteObjectiveAssociationsById = deleteObjectiveAssociationsById;
 		vm.deleteObjectiveAssociationsByObjectiveAssociationId = deleteObjectiveAssociationsByObjectiveAssociationId;
 		vm.deleteCompanyById = deleteCompanyById;
@@ -170,6 +177,42 @@
 				});
 		}
 
+		function putEmployee(){
+			var updatedObj = {
+				"id": vm.id,
+				"companyId": vm.companyId,
+				"departmentId": vm.departmentId,
+				"firstName": vm.firstName,
+				"lastName": vm.lastName,
+				"emailAddress": vm.email,
+				"department": vm.department,
+				"assignments": vm.assignments
+			};
+			
+			apiService
+				.putEmployee(updatedObj)
+				.then(function(data) {
+				});
+		}
+		
+		function putKeyResult(){
+			var updatedObj = {
+				"id": vm.id,
+				"companyId": vm.companyId,
+				"departmentId": vm.departmentId,
+				"companyObjectiveId": vm.companyObjectiveId,
+				"departmentObjectiveId": vm.departmentObjectiveId,
+				"title": vm.title,
+				"companyObjective": vm.companyObjective,
+				"departmentObjective": vm.departmentObjective
+			};
+			
+			apiService
+				.putKeyResult(updatedObj)
+				.then(function(data) {
+				});
+		}
+		
 		function getObjectiveAssociationsById(){
 			apiService
 				.getObjectiveAssociationsById(vm.companyId)

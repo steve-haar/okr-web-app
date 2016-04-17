@@ -3,22 +3,24 @@
       <md-content layout="column" class="md-padding">
 
 
-	<input type="text" ng-model="main.companyId" />
-	<input type="text" ng-model="main.id" />
-	<input type="text" ng-model="main.title" />
-	<input type="text" ng-model="main.description" />
-	<input type="text" ng-model="main.percentage" />
-	<input type="text" ng-model="main.estimatedCompletionDate" />
-	<input type="text" ng-model="main.name" />
-	<input type="text" ng-model="main.month" />
-	<input type="text" ng-model="main.departmentObjectiveId" />
-	
-	<input type="text" ng-model="main.objectiveId" />
-	<input type="text" ng-model="main.departmentId" />
-	<input type="text" ng-model="main.objectiveAssociationsId" />
-	<input type="text" ng-model="main.employeeId" />
-	<input type="text" ng-model="main.keyResultId" />
-	<input type="text" ng-model="main.companyObjectiveId" />
+	<input type="text" ng-model="main.companyId" placeholder="companyId" />
+	<input type="text" ng-model="main.id" placeholder="id" />
+	<input type="text" ng-model="main.title" placeholder="title" />
+	<input type="text" ng-model="main.description" placeholder="description" />
+	<input type="text" ng-model="main.percentage" placeholder="percentage" />
+	<input type="text" ng-model="main.estimatedCompletionDate" placeholder="estimatedCompletionDate" />
+	<input type="text" ng-model="main.name" placeholder="(company) name" />
+	<input type="text" ng-model="main.firstName" placeholder="first name" />
+	<input type="text" ng-model="main.lastName" placeholder="last name" />
+	<input type="text" ng-model="main.email" placeholder="email" />
+	<input type="text" ng-model="main.month" placeholder="month" />
+	<input type="text" ng-model="main.departmentObjectiveId" placeholder="departmentObjectiveId"/>
+	<input type="text" ng-model="main.objectiveId" placeholder="objectiveId" />
+	<input type="text" ng-model="main.departmentId" placeholder="departmentId" />
+	<input type="text" ng-model="main.objectiveAssociationsId" placeholder="objectiveAssociationsId" />
+	<input type="text" ng-model="main.employeeId" placeholder="employeeId" />
+	<input type="text" ng-model="main.keyResultId" placeholder="keyResultId" />
+	<input type="text" ng-model="main.companyObjectiveId" placeholder="companyObjectiveId" />
 	
 	
 	<!-- Successfully Tested
@@ -61,6 +63,14 @@
 	
 	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
 	<button ng-click="main.putDepartment()">Put Dept</button>
+	</div>
+	
+	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
+	<button ng-click="main.putEmployee()">Put Employee</button>
+	</div>
+	
+	<div class="buttons" layout="row" layout-align="center center" style="white-space:pre-wrap;">
+	<button ng-click="main.putKeyResult()">Put KeyResult</button>
 	</div>
 	
 	<!--Successfully Tested
@@ -118,7 +128,7 @@
 			<h4>departmentObjectiveId: {{objective.departmentObjectiveId}}</h4>
 		</div>
 	</div>
-	-->
+	
 	<br/><strong>Key Results Output:</strong><br/>
 	<div ng-repeat="keyResult in main.KeyResults">
 		<div>
@@ -130,7 +140,7 @@
 			<h4>Description: {{keyResult.description}}</h4>
 		</div>
 	</div>
-	
+	-->
 	
       </md-content>
     </form>
