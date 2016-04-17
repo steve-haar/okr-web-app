@@ -28,7 +28,7 @@
             </md-tooltip>-->
           </div>
           <md-content layout="column" class="md-padding">
-            <p ng-show="obj.description != ''"><em>{{obj.description}}</em></p>
+            <p><em>{{obj.description}}</em></p>
             <ul>
               <li ng-repeat="objectiveAssociation in obj.objectiveAssociations">
                 <span>{{ objectiveAssociation.departmentObjective.title }} - {{ objectiveAssociation.departmentObjective.percentage *100}}% Complete</span>

@@ -46,7 +46,6 @@
 			deleteEmployeeByDepartmentId: deleteEmployeeByDepartmentId,
 			deleteDepartmentById: deleteDepartmentById,
 			postCompany: postCompany,
-			postCreateCompanyObjective: postCreateCompanyObjective,
 			postAssignment: postAssignment,
 			postCompanyObjective: postCompanyObjective,
 			getCompanyObjectives: getCompanyObjectives
