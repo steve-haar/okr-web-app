@@ -3,7 +3,7 @@
     <md-toolbar>
       <div class="md-toolbar-tools">
         <h2>
-          <span>{{ vm.company.name }} Company Objectives</span>
+          <span>{{ vm.department.name }} Department Objectives</span>
         </h2>
         <span flex></span>
         <md-button class="md-button" aria-label="Department View">
@@ -12,34 +12,36 @@
       </div>
     </md-toolbar>
     <md-content layout="column" class="md-padding">
-      <div ng-repeat="obj in vm.companyObjectives">
+      <div ng-repeat="obj in vm.departmentObjectives">
         <div layout="column" class="objective-box md-whiteframe-z1">
           <md-toolbar class="md-accent">
             <div class="md-toolbar-tools">
-              <h2><span>{{obj.id}} | {{obj.title}}</span></h2>
+              <h2><span>{{ obj.title }}</span></h2>
               <span flex></span>
-              <span>{{obj.percentage * 100}}% Complete</span>
+              <span>{{ obj.percentage * 100 }}% Complete</span>
             </div>
           </md-toolbar>
           <div class="progress-container">
-            <md-progress-linear md-mode="determinate" value="{{ obj.percentage * 100}}"></md-progress-linear>
+            <md-progress-linear md-mode="determinate" value="{{ obj.percentage * 100 }}"></md-progress-linear>
             <!--<md-tooltip md-direction="bottom">
-              {{obj.percentage * 100}}% Complete
+              {{obj.percentage}}% Complete
             </md-tooltip>-->
           </div>
           <md-content layout="column" class="md-padding">
-            <p><em>{{obj.description}}</em></p>
+            <p><em>{{ obj.description }}</em></p>
             <ul>
-              <li ng-repeat="objectiveAssociation in obj.objectiveAssociations">
-                <span>{{ objectiveAssociation.departmentObjective.title }} - {{ objectiveAssociation.departmentObjective.percentage *100}}% Complete</span>
-                <span style="float:right"><a href="#/departments/{{ objectiveAssociation.departmentId }}">{{ objectiveAssociation.departmentObjective.department.name }} Department</a></span>
+              <li ng-repeat="keyResult in obj.keyResults">
+                {{ keyResult.title }}
+              </li>
+              <li>
+                Add Key Result
               </li>
             </ul>
           </md-content>
           <md-card-actions layout="row">
             <span flex></span>
-            <md-button>Edit</md-button>
-			      <md-button>Delete</md-button>
+            <md-button>Action 1</md-button>
+            <md-button>Action 2</md-button>
           </md-card-actions>
         </div>
       </div>
