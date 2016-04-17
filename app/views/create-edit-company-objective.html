@@ -3,7 +3,8 @@
     <md-toolbar>
       <div class="md-toolbar-tools">
         <h2>
-          <span>Create a New Company Objective</span>
+          <span ng-show="vm.isCreate">Create a New Company Objective</span>
+          <span ng-show="!vm.isCreate">Modifying a Company Objective</span>
         </h2>
         <span flex></span>
         <md-button class="md-button" aria-label="Department View" ng-click="vm.viewCompanyObjectives()">
@@ -12,7 +13,42 @@
       </div>
     </md-toolbar>
     <md-content layout="column" class="md-padding">
+      <form name="companyObjectiveForm">
+        <md-input-container class="md-block">
+          <label>Objective Name</label>
+          <input ng-model="vm.objectiveData.name" md-select-on-focus>
+        </md-input-container>
 
+        <md-input-container class="md-block">
+          <label>Description</label>
+          <textarea ng-model="vm.objectiveData.description" rows="5"></textarea>
+        </md-input-container>
+
+        <div layout>
+          <div flex="20" layout layout-align="left center">
+            <label>Percent Complete</label>
+          </div>
+          <md-slider flex ng-model="vm.objectiveData.percentage" step="1" min="0" max="100" aria-label="percentage" id="percentage-slider">
+          </md-slider>
+          <div flex="10" layout layout-align="center center">
+          <span class="md-body-1">{{ vm.objectiveData.percentage }}%</span>
+          </div>
+        </div>
+
+        <div layout>
+          <div flex="20" layout layout-align="left center">
+            <label>Estimated Completion Date</label>
+          </div>
+          <md-datepicker ng-model="vm.objectiveData.estimatedCompletionDate" md-placeholder="Select a Date"></md-datepicker>
+        </div>
+
+        <div layout>
+          <span flex></span>
+          <md-button class="md-raised md-primary" ng-click="vm.postCreateCompanyObjective()" ng-show="vm.isCreate">Create Objective</md-button>
+          <md-button class="md-raised md-primary" ng-click="" ng-show="!vm.isCreate">Save Objective</md-button>
+          <md-button class="md-raised" ng-click="vm.viewCompanyObjectives()">Cancel</md-button>
+        </div>
+      </form>
     </md-content>
   </div>
 </div>
