@@ -12,7 +12,7 @@
     vm.departments = [];
     vm.isCreate = true;
     vm.objectiveData =  {
-      name: '',
+      title: '',
       description: '',
       estimatedCompletionDate: '',
       percentage: 0
@@ -29,6 +29,12 @@
       apiService
         .postCreateCompanyObjective(vm.companyId, vm.objectiveData)
         .then(function(data){
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent('The company objective, "' + vm.objectiveData.title + '" has been created!')
+              .position('top right')
+              .hideDelay(5000);
+          );
           $location.path("/companies/" + vm.companyId);
           console.log(data);
         });
