@@ -16,7 +16,7 @@
         <div layout="column" class="objective-box md-whiteframe-z1">
           <md-toolbar class="md-accent">
             <div class="md-toolbar-tools">
-              <h2><span>{{obj.id}} | {{obj.title}}</span></h2>
+              <h2><span>{{obj.title}}</span></h2>
               <span flex></span>
               <span>{{obj.percentage * 100}}% Complete</span>
             </div>
@@ -37,9 +37,14 @@
             </ul>
           </md-content>
           <md-card-actions layout="row">
+            <md-button>
+              Estimated Completion Date:
+                <span ng-show="'{{ obj.estimatedCompletionDate | date }}' == 'Jan 1, 1'">N/A</span>
+                <span ng-show="'{{ obj.estimatedCompletionDate | date }}' != 'Jan 1, 1'">{{ obj.estimatedCompletionDate | date }}</span>
+            </md-button>
             <span flex></span>
-            <md-button>Edit</md-button>
-			      <md-button>Delete</md-button>
+            <md-button ng-click="vm.editObjective(obj.id)">Edit</md-button>
+			      <md-button ng-click="vm.showConfirmDeleteCompanyObjectiveDialog(obj)">Delete</md-button>
           </md-card-actions>
         </div>
       </div>

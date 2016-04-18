@@ -24,7 +24,7 @@
           <textarea ng-model="vm.objectiveData.description" rows="5"></textarea>
         </md-input-container>
 
-        <div layout>
+        <div layout ng-show="!vm.isCreate">
           <div flex="20" layout layout-align="left center">
             <label>Percent Complete</label>
           </div>
@@ -35,7 +35,7 @@
           </div>
         </div>
 
-        <div layout>
+        <div layout ng-show="!vm.isCreate">
           <div flex="20" layout layout-align="left center">
             <label>Estimated Completion Date</label>
           </div>
@@ -45,7 +45,7 @@
         <div layout>
           <span flex></span>
           <md-button class="md-raised md-primary" ng-click="vm.postCreateCompanyObjective()" ng-show="vm.isCreate">Create Objective</md-button>
-          <md-button class="md-raised md-primary" ng-click="" ng-show="!vm.isCreate">Save Objective</md-button>
+          <md-button class="md-raised md-primary" ng-click="vm.putCompanyObjective()" ng-show="!vm.isCreate">Save Objective</md-button>
           <md-button class="md-raised" ng-click="vm.viewCompanyObjectives()">Cancel</md-button>
         </div>
       </form>

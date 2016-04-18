@@ -29,9 +29,9 @@ angular.module('app', [
 	})
 
 
-	.when('/companies/:companyId/company-objective/create', {
+	.when('/companies/:companyId/company-objective/:objectiveId?', {
 		templateUrl: 'app/views/create-edit-company-objective.html',
-		controller: 'CreateCompanyObjectiveCtrl',
+		controller: 'CompanyObjectiveFormCtrl',
 		controllerAs: 'vm'
 	})
 

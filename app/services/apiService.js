@@ -14,6 +14,7 @@
 			getCompany: getCompany,
 			getUsers: getUsers,
 			getCompanyObjectivesById: getCompanyObjectivesById,
+			getCompanyObjectiveById: getCompanyObjectiveById,
 			getDepartmentObjectivesById: getDepartmentObjectivesById,
 			getDepartmentsByCompanyId: getDepartmentsByCompanyId,
 			getDepartmentById: getDepartmentById,
@@ -85,12 +86,21 @@
 						return response.data;
 					});
 		}
+
+		function getCompanyObjectiveById(companyId, objectiveId){
+			return $http.get(baseUrl + '/companies/' + companyId + '/company-objectives/' + objectiveId)
+					.then(function(response) {
+						return response.data;
+					});
+		}
+
 		function getCompanyObjectives() {
 			return $http.get(baseUrl + '/company-objectives')
 					.then(function(response) {
 						return response.data;
 					});
 		}
+
 		function getDepartmentObjectivesById(companyId, departmentId){
 			return $http.get(baseUrl + '/companies/' + companyId + '/departments/' + departmentId + '/department-objectives?include=keyResults')
 					.then(function(response) {
