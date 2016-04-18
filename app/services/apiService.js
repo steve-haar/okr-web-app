@@ -43,8 +43,8 @@
 			postDepartment: postDepartment,
 			postEmployee: postEmployee,
 			postKeyResult: postKeyResult,
+			postObjectiveAssociation: postObjectiveAssociation,
 			deleteObjectiveAssociationsById: deleteObjectiveAssociationsById,
-			deleteObjectiveAssociationsByObjectiveAssociationId: deleteObjectiveAssociationsByObjectiveAssociationId,
 			deleteCompanyById: deleteCompanyById,
 			deleteCompanyObjectivesById: deleteCompanyObjectivesById,
 			deleteDepartmentObjectiveById: deleteDepartmentObjectiveById,
@@ -52,6 +52,7 @@
 			deleteEmployeeByAllId: deleteEmployeeByAllId,
 			deleteEmployeeByDepartmentId: deleteEmployeeByDepartmentId,
 			deleteDepartmentById: deleteDepartmentById,
+			deleteAssignmentById: deleteAssignmentById,
 			postCompany: postCompany,
 			postCreateCompanyObjective: postCreateCompanyObjective,
 			postAssignment: postAssignment,
@@ -208,7 +209,7 @@
 		}
 
 		function postAssignment(newObj){
-			return $http.post(baseUrl + '/companies', newObj)
+			return $http.post(baseUrl + '/assignments/', newObj)
 			.then(function(response) {
 				return response.data;
 			})
@@ -242,6 +243,12 @@
 		function postKeyResult(newObj){
 			return $http.post(baseUrl + '/Key-Results', newObj)
 			.then(function(response) {
+				return response.data;
+			})
+		}
+		function postObjectiveAssociation(newObj){
+			return $http.post(baseUrl + '/objective-associations', newObj)
+			.then(function(response){
 				return response.data;
 			})
 		}
@@ -293,16 +300,10 @@
 
 		//DELETES
 
-		function deleteObjectiveAssociationsById(id, obj) {
-			return $http.delete(baseUrl + '/companies/' + id + '/objective-associations/' + obj)
-			.then(function(response) {
-				return;
-			})
-		}
-		function deleteObjectiveAssociationsByObjectiveAssociationId(id) {
+		function deleteObjectiveAssociationsById(id) {
 			return $http.delete(baseUrl + '/objective-associations/' + id)
 			.then(function(response) {
-			return;
+				return;
 			})
 		}
 		function deleteCompanyById(id){
@@ -343,6 +344,12 @@
 		}
 		function deleteDepartmentById(companyId, deptartmentId){
 			return $http.delete(baseUrl + '/companies/' + companyId + '/departments/' + deptartmentId)
+			.then(function(response){
+				return;
+			})
+		}
+		function deleteAssignmentById(id){
+			return $http.delete(baseUrl + '/assignments/' + id)
 			.then(function(response){
 				return;
 			})

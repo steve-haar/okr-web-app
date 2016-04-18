@@ -37,14 +37,15 @@
 		vm.postDepartment = postDepartment;
 		vm.postEmployee = postEmployee;
 		vm.postKeyResult = postKeyResult;
+		vm.postObjectiveAssociation = postObjectiveAssociation;
 		vm.deleteObjectiveAssociationsById = deleteObjectiveAssociationsById;
-		vm.deleteObjectiveAssociationsByObjectiveAssociationId = deleteObjectiveAssociationsByObjectiveAssociationId;
 		vm.deleteCompanyById = deleteCompanyById;
 		vm.deleteCompanyObjectivesById = deleteCompanyObjectivesById;
 		vm.deleteEmployeeById = deleteEmployeeById;
 		vm.deleteEmployeeByAllId = deleteEmployeeByAllId;
 		vm.deleteEmployeesByDepartment = deleteEmployeesByDepartment;
 		vm.deleteDepartmentById = deleteDepartmentById;
+		vm.deleteAssignmentById = deleteAssignmentById;
 		
 		
 
@@ -399,18 +400,28 @@
 				.then(function(data) {
 				});
 		}
+		function postObjectiveAssociation(){
+			var newObj = {
+				"id": vm.id,
+				"companyId": vm.companyId,
+				"departmentId": vm.departmentId,
+				"companyObjectiveId": vm.companyObjectiveId,
+				"departmentObjectiveId": vm.departmentObjectiveId,
+				"companyObjective": vm.companyObjective,
+				"departmentObjective": vm.departmentObjective
+			}
+			apiService
+				.postObjectiveAssociation(newObj)
+				.then(function(data){
+				});
+		}
 		
 		
 		//DELETES
 		
 		function deleteObjectiveAssociationsById() {
-			apiService.deleteObjectiveAssociationsById(vm.companyId, vm.departmentId);
+			apiService.deleteObjectiveAssociationsById(vm.id);
 		}
-
-		function deleteObjectiveAssociationsByObjectiveAssociationId() {
-			apiService.deleteObjectiveAssociationsByObjectiveAssociationId(vm.objectiveAssociationsId);
-		}
-
 		function deleteCompanyById(){
 			apiService
 				.deleteCompanyById(vm.companyId);
@@ -434,6 +445,10 @@
 		function deleteDepartmentById(){
 			apiService
 				.deleteDepartmentById(vm.companyId, vm.departmentId);
+		}
+		function deleteAssignmentById(){
+			apiService
+				.deleteAssignmentById(vm.id);
 		}
     }
 }());
