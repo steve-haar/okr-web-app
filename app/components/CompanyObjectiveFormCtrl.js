@@ -18,7 +18,7 @@
       estimatedCompletionDate: new Date(),
       percentage: 0
     };
-    
+
     vm.viewCompanyObjectives = function(){ $location.path("/companies/" + vm.companyId) };
     vm.postCreateCompanyObjective = postCreateCompanyObjective;
     vm.putCompanyObjective = putCompanyObjective;
@@ -33,7 +33,7 @@
         .then(function(data){
           $mdToast.show(
             $mdToast.simple()
-              .textContent('The company objective, "' + vm.objectiveData.title + '" has been created!')
+              .textContent('The company objective "' + vm.objectiveData.title + '" has been created!')
               .position('top right')
               .hideDelay(3000)
           );
@@ -50,7 +50,7 @@
         .then(function(data){
           $mdToast.show(
             $mdToast.simple()
-              .textContent('The company objective, "' + data.title + '" has been updated!')
+              .textContent('The company objective "' + data.title + '" has been updated!')
               .position('top right')
               .hideDelay(3000)
           );

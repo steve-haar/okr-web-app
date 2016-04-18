@@ -1,0 +1,54 @@
+<div layout="column" layout-align="top center" layout-fill="layout-fill" class="md-padding">
+  <div layout="column" class="content-page md-whiteframe-z2">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>
+          <span ng-show="vm.isCreate">Create a New {{ vm.department.name }} Department Objective</span>
+          <span ng-show="!vm.isCreate">Modifying a {{ vm.department.name }} Department Objective</span>
+        </h2>
+        <span flex></span>
+        <md-button class="md-button" aria-label="Department View" ng-click="vm.viewDepartmentObjectives()">
+          <i class="fa fa-fw fa-building-o"></i> {{ vm.department.name }} Department Objectives
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-content layout="column" class="md-padding">
+      <form name="companyObjectiveForm">
+        <md-input-container class="md-block">
+          <label>Objective Title</label>
+          <input ng-model="vm.objectiveData.title" md-select-on-focus>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <label>Description</label>
+          <textarea ng-model="vm.objectiveData.description" rows="5"></textarea>
+        </md-input-container>
+
+        <div layout ng-show="!vm.isCreate">
+          <div flex="20" layout layout-align="left center">
+            <label>Percent Complete</label>
+          </div>
+          <md-slider flex ng-model="vm.objectiveData.percentage" step="1" min="0" max="100" aria-label="percentage" id="percentage-slider">
+          </md-slider>
+          <div flex="10" layout layout-align="center center">
+          <span class="md-body-1">{{ vm.objectiveData.percentage }}%</span>
+          </div>
+        </div>
+
+        <div layout ng-show="!vm.isCreate">
+          <div flex="20" layout layout-align="left center">
+            <label>Estimated Completion Date</label>
+          </div>
+          <md-datepicker ng-model="vm.objectiveData.estimatedCompletionDate" md-placeholder="Select a Date"></md-datepicker>
+        </div>
+
+        <div layout>
+          <span flex></span>
+          <md-button class="md-raised md-primary" ng-click="vm.postCreateDepartmentObjective()" ng-show="vm.isCreate">Create Objective</md-button>
+          <md-button class="md-raised md-primary" ng-click="vm.putDepartmentObjective()" ng-show="!vm.isCreate">Save Objective</md-button>
+          <md-button class="md-raised" ng-click="vm.viewDepartmentObjectives()">Cancel</md-button>
+        </div>
+      </form>
+    </md-content>
+  </div>
+</div>

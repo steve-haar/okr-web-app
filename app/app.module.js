@@ -35,6 +35,13 @@ angular.module('app', [
 		controllerAs: 'vm'
 	})
 
+
+	.when('/companies/:companyId/departments/:departmentId/department-objective/:objectiveId?', {
+		templateUrl: 'app/views/create-edit-department-objective.html',
+		controller: 'DepartmentObjectiveFormCtrl',
+		controllerAs: 'vm'
+	})
+
 	.when('/demo', {
 		templateUrl: 'app/views/demo.html',
 		controller: 'MainCtrl',

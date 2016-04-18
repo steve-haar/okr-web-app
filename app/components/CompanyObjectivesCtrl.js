@@ -3,12 +3,12 @@
 
   angular
     .module('app')
-    .controller('CompanyObjectivesCtrl', ['$location',  '$mdToast', '$mdDialog', 'apiService', CompanyObjectivesCtrl]);
+    .controller('CompanyObjectivesCtrl', ['$location', '$routeParams', '$mdToast', '$mdDialog', 'apiService', CompanyObjectivesCtrl]);
 
-  function CompanyObjectivesCtrl($location, $mdToast, $mdDialog, apiService) {
+  function CompanyObjectivesCtrl($location, $routeParams, $mdToast, $mdDialog, apiService) {
     var vm = this;
 
-    vm.companyId = 1;
+    vm.companyId = $routeParams.companyId;
     vm.company = {};
     vm.companyObjectives = {};
     vm.companyDepartments = {};
@@ -56,7 +56,7 @@
         .then(function(data){
           $mdToast.show(
             $mdToast.simple()
-              .textContent('The company objective, "' + objectiveToDelete.title + '" has been deleted!')
+              .textContent('The company objective "' + objectiveToDelete.title + '" has been deleted!')
               .position('top right')
               .hideDelay(5000)
           );
@@ -68,7 +68,7 @@
       // Appending dialog to document.body to cover sidenav in docs app
       var confirm = $mdDialog.confirm()
             .title('Delete Company Objective')
-            .textContent('Are you sure you want to delete the company objective :"'+ objectiveToDelete.title +'"?')
+            .textContent('Are you sure you want to delete the company objective "'+ objectiveToDelete.title +'"?')
             //.targetEvent(ev)
             .ok('Yes!')
             .cancel('No');

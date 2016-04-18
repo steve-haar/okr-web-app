@@ -6,7 +6,10 @@
           <span>{{ vm.department.name }} Department Objectives</span>
         </h2>
         <span flex></span>
-        <md-button class="md-button" aria-label="Department View">
+        <md-button class="md-button" aria-label="Company Objectives" ng-click="vm.viewCompanyObjectives()">
+          <i class="fa fa-fw fa-building-o"></i>Company Objectives
+        </md-button>
+        <md-button class="md-button" aria-label="New Objective" ng-click="vm.createNewDepartmentObjective()">
           <i class="fa fa-fw fa-file-text-o"></i> New Objective
         </md-button>
       </div>
@@ -40,8 +43,8 @@
           </md-content>
           <md-card-actions layout="row">
             <span flex></span>
-            <md-button>Action 1</md-button>
-            <md-button>Action 2</md-button>
+            <md-button ng-click="vm.editObjective(obj.id)">Edit</md-button>
+            <md-button ng-click="vm.showConfirmDeleteCompanyObjectiveDialog(obj)">Delete</md-button>
           </md-card-actions>
         </div>
       </div>
