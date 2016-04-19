@@ -30,18 +30,66 @@
               {{obj.percentage}}% Complete
             </md-tooltip>-->
           </div>
-          <md-content layout="column" class="md-padding">
-            <p><em>{{ obj.description }}</em></p>
+          <md-content layout="column" class="md-padding" style="padding-bottom: 0">
+            <p ng-show="obj.description != ''"><em>{{obj.description}}</em></p>
             <ul>
               <li ng-repeat="keyResult in obj.keyResults">
                 {{ keyResult.title }}
-              </li>
-              <li>
-                Add Key Result
+                <span style="float:right">
+                  <a href="" ng-click="vm.showConfirmRemoveKeyResultDialog(obj, keyResult)"><i class="fa fa-fw fa-trash"></i></a>
+                  <a href="" ng-click="vm.showConfirmRemoveKeyResultDialog(obj, keyResult)">Remove</a>
+
+                </span>
               </li>
             </ul>
+            <div>
+              <md-button class="md-raised md-accent" ng-click="vm.addKeyResultTo(obj)" ng-show="!vm.isAddingKeyResultTo(obj)">Add Key Result</md-button>
+            </div>
+            <div layout="row" flex ng-show="vm.isAddingKeyResultTo(obj)">
+              <md-input-container flex class="md-icon-float md-block">
+                <label>New Key Result</label>
+                <input ng-model="vm.keyResultData">
+                </md-input-container>
+              <div>
+              <md-button class="md-raised md-accent" ng-click="vm.addKeyResult()">Add Key Result</md-button>
+              <md-button class="md-raised" ng-click="vm.cancelAddingKeyResult()">Cancel</md-button>
+              </div>
+            </div>
+            <div layout="row" flex style="padding-top: 15px">
+              <span ng-repeat="assignment in obj.assignments">
+                  <md-tooltip md-direction="bottom">
+                    {{ assignment.employee.firstName + ' ' + assignment.employee.lastName }}
+                  </md-tooltip>
+                  <img ng-src="{{ vm.getGravatar(assignment.employee.emailAddress) }}?s=56" class="md-whiteframe-z1" style="border-radius: 50%; margin: 6px; cursor: pointer"
+                      ng-click="vm.showConfirmRemoveEmployeeDialog(obj, assignment)">
+              </span>
+              <md-button class="md-fab" aria-label="Employee Add" ng-click="vm.addEmployeeTo(obj)" ng-show="!vm.isAddingEmployeeTo(obj)">
+                  <md-tooltip md-direction="bottom">
+                    Add an Employee
+                  </md-tooltip>
+                <i class="fa fa-2x fa-plus" style="margin-top:15px;"></i>
+              </md-button>
+
+              <div layout="row" flex ng-show="vm.isAddingEmployeeTo(obj)">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Employee to Add</label>
+                  <md-select ng-model="vm.employeeAddId">
+                    <md-option ng-repeat="employee in vm.departmentEmployees" value="{{ employee.id }}">
+                      {{ employee.firstName + ' ' + employee.lastName }}
+                    </md-option>
+                  </md-select>
+                </md-input-container>
+                <md-button class="md-raised md-accent" ng-click="vm.addEmployee()">Add Employee</md-button>
+                <md-button class="md-raised" ng-click="vm.cancelAddingEmployee()">Cancel</md-button>
+              </div>
+            </div>
           </md-content>
           <md-card-actions layout="row">
+            <md-button>
+              Estimated Completion Date:
+                <span ng-show="'{{ obj.estimatedCompletionDate | date }}' == 'Jan 1, 1'">N/A</span>
+                <span ng-show="'{{ obj.estimatedCompletionDate | date }}' != 'Jan 1, 1'">{{ obj.estimatedCompletionDate | date }}</span>
+            </md-button>
             <span flex></span>
             <md-button ng-click="vm.editObjective(obj.id)">Edit</md-button>
             <md-button ng-click="vm.showConfirmDeleteCompanyObjectiveDialog(obj)">Delete</md-button>

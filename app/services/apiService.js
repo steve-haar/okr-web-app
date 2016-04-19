@@ -23,6 +23,7 @@
 			getObjectiveAssociations: getObjectiveAssociations,
 			getObjectiveAssociationsById: getObjectiveAssociationsById,
 			getObjectiveAssociationsByObjectiveId: getObjectiveAssociationsByObjectiveId,
+			getCompanyEmployees: getCompanyEmployees,
 			getEmployeesByDepartment: getEmployeesByDepartment,
 			getEmployeesByDepartmentAndId: getEmployeesByDepartmentAndId,
 			getEmployees: getEmployees,
@@ -53,6 +54,7 @@
 			deleteEmployeeByDepartmentId: deleteEmployeeByDepartmentId,
 			deleteDepartmentById: deleteDepartmentById,
 			deleteAssignmentById: deleteAssignmentById,
+			deleteKeyResultById: deleteKeyResultById,
 			postCompany: postCompany,
 			postCreateCompanyObjective: postCreateCompanyObjective,
 			postAssignment: postAssignment,
@@ -105,7 +107,7 @@
 		}
 
 		function getDepartmentObjectivesById(companyId, departmentId){
-			return $http.get(baseUrl + '/companies/' + companyId + '/departments/' + departmentId + '/department-objectives?include=keyResults')
+			return $http.get(baseUrl + '/companies/' + companyId + '/departments/' + departmentId + '/department-objectives?include=keyResults,assignments,assignments.employee')
 					.then(function(response) {
 						return response.data;
 					});
@@ -167,8 +169,14 @@
 				return response.data;
 			})
 		}
-		function getEmployeesByDepartment(id, dept) {
-			return $http.get(baseUrl + '/companies/' + id + '/departments/' + dept)
+		function getCompanyEmployees(companyId){
+			return $http.get(baseUrl + '/employees/?where=companyId=' + companyId)
+			.then(function(response) {
+				return response.data;
+			})
+		}
+		function getEmployeesByDepartment(companyId, deptartmentId) {
+			return $http.get(baseUrl + '/companies/' + companyId + '/departments/' + deptartmentId + '/employees/')
 			.then(function(response) {
 				return response.data;
 			})
@@ -241,7 +249,7 @@
 			})
 		}
 		function postKeyResult(newObj){
-			return $http.post(baseUrl + '/Key-Results', newObj)
+			return $http.post(baseUrl + '/key-results/', newObj)
 			.then(function(response) {
 				return response.data;
 			})
@@ -320,6 +328,12 @@
 		}
 		function deleteDepartmentObjectiveById(companyId, departmentId, objectiveId){
 			return $http.delete(baseUrl + '/companies/' + companyId + '/departments/' + departmentId + '/department-objectives/' + objectiveId)
+			.then(function(response){
+				return;
+			})
+		}
+		function deleteKeyResultById(id){
+			return $http.delete(baseUrl + '/key-results/' + id)
 			.then(function(response){
 				return;
 			})
