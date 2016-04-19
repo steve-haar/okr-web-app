@@ -11,7 +11,14 @@
         </md-button>
       </div>
     </md-toolbar>
-    <md-content layout="column" class="md-padding">
+    <md-content class="md-padding">
+      <div layout="row" layout-sm="column" layout-align="space-around" style="margin-bottom: 10px;">
+        <span  ng-repeat="department in vm.companyDepartments">
+          <a href="#/companies/{{ vm.company.id }}/departments/{{ department.id }}" class="md-button md-raised md-accent">
+            {{ department.name }} Department Objectives
+          </a>
+        </span>
+      </div>
       <div ng-repeat="obj in vm.companyObjectives">
         <div layout="column" class="objective-box md-whiteframe-z1">
           <md-toolbar class="md-accent">

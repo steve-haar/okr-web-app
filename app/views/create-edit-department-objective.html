@@ -42,6 +42,15 @@
           <md-datepicker ng-model="vm.objectiveData.estimatedCompletionDate" md-placeholder="Select a Date"></md-datepicker>
         </div>
 
+        <md-input-container class="md-block" ng-show="vm.isCreate">
+          <label>Associated Company Objective</label>
+          <md-select ng-model="vm.companyObjectiveToAssignTo">
+            <md-option ng-repeat="objective in vm.companyObjectives" value="{{ objective.id }}">
+              {{ objective.title }}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
         <div layout>
           <span flex></span>
           <md-button class="md-raised md-primary" ng-click="vm.postCreateDepartmentObjective()" ng-show="vm.isCreate">Create Objective</md-button>

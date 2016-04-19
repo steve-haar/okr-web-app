@@ -10,14 +10,14 @@
 
     vm.companyId = $routeParams.companyId;
     vm.company = {};
-    vm.companyObjectives = {};
-    vm.companyDepartments = {};
+    vm.companyObjectives = [];
+    vm.companyDepartments = [];
     vm.createNewObjective = function(){ $location.path("/companies/" + vm.companyId + "/company-objective/") };
     vm.editObjective = function(id){ $location.path("/companies/" + vm.companyId + "/company-objective/" + id) };
     vm.showConfirmDeleteCompanyObjectiveDialog = showConfirmDeleteCompanyObjectiveDialog;
 
     getCompanyObjectivesById(vm.companyId);
-    getCompanyDepartmentsById(vm.companyId);
+    getDepartmentsByCompanyId(vm.companyId);
     getCompany(vm.companyId);
 
 
@@ -39,9 +39,9 @@
         });
     }
 
-    function getCompanyDepartmentsById(id){
+    function getDepartmentsByCompanyId(id){
       apiService
-        .getDepartmentObjectivesById(id)
+        .getDepartmentsByCompanyId(id)
         .then(function(data) {
           vm.companyDepartments = data;
           console.log(data);

@@ -11,6 +11,7 @@
     vm.getGravatar = gravatarService.get;
     vm.companyId = $routeParams.companyId;
     vm.departmentId = $routeParams.departmentId;
+    vm.companyDepartments = [];
     vm.department = {};
     vm.departmentObjectives = [];
     vm.departmentEmployees = [];
@@ -35,6 +36,7 @@
 
     getDepartmentById(vm.companyId, vm.departmentId);
     getDepartmentObjectivesById(vm.companyId, vm.departmentId);
+    getDepartmentsByCompanyId(vm.companyId);
     getEmployees();
 
     // Add/Remove Employees
@@ -129,6 +131,7 @@
           var obj = findObjectiveById(data.departmentObjectiveId);
           if (obj != undefined){
             obj.keyResults.push(data);
+            vm.keyResultData = '';
             $mdToast.show(
               $mdToast.simple()
                 .textContent('Key result "'+ data.title +'" has been added to the department objective "' + obj.title + '"!')
@@ -154,6 +157,16 @@
           vm.department = data;
         });
     }
+
+    function getDepartmentsByCompanyId(id){
+      apiService
+        .getDepartmentsByCompanyId(id)
+        .then(function(data) {
+          vm.companyDepartments = data;
+          console.log(data);
+        });
+    }
+
 
     function getDepartmentObjectivesById(companyId, departmentId) {
       apiService

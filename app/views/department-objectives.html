@@ -10,11 +10,21 @@
           <i class="fa fa-fw fa-building-o"></i>Company Objectives
         </md-button>
         <md-button class="md-button" aria-label="New Objective" ng-click="vm.createNewDepartmentObjective()">
-          <i class="fa fa-fw fa-file-text-o"></i> New Objective
+          <i class="fa fa-fw fa-file-text-o"></i> New {{ vm.department.name }} Department Objective
         </md-button>
       </div>
     </md-toolbar>
-    <md-content layout="column" class="md-padding">
+    <md-content class="md-padding">
+      <div layout="row" layout-sm="column" layout-align="space-around" style="margin-bottom: 10px;">
+        <span  ng-repeat="department in vm.companyDepartments">
+          <a href="#/companies/{{ vm.companyId }}/departments/{{ department.id }}" class="md-button md-raised md-accent" ng-show="department.id != vm.department.id">
+            {{ department.name }} Department Objectives
+          </a>
+          <a class="md-button md-raised md-primary" ng-show="department.id == vm.department.id">
+            {{ department.name }} Department Objectives
+          </a>
+        </span>
+      </div>
       <div ng-repeat="obj in vm.departmentObjectives">
         <div layout="column" class="objective-box md-whiteframe-z1">
           <md-toolbar class="md-accent">
@@ -42,9 +52,9 @@
                 </span>
               </li>
             </ul>
-            <div>
+            <span>
               <md-button class="md-raised md-accent" ng-click="vm.addKeyResultTo(obj)" ng-show="!vm.isAddingKeyResultTo(obj)">Add Key Result</md-button>
-            </div>
+            </span>
             <div layout="row" flex ng-show="vm.isAddingKeyResultTo(obj)">
               <md-input-container flex class="md-icon-float md-block">
                 <label>New Key Result</label>

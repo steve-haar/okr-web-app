@@ -59,7 +59,8 @@
 			postCreateCompanyObjective: postCreateCompanyObjective,
 			postAssignment: postAssignment,
 			postCompanyObjective: postCompanyObjective,
-			getCompanyObjectives: getCompanyObjectives
+			getCompanyObjectives: getCompanyObjectives,
+			getDepartmentsByCompanyId: getDepartmentsByCompanyId,
 		};
 
 		//define functions here
@@ -105,7 +106,12 @@
 						return response.data;
 					});
 		}
-
+		function getDepartmentsByCompanyId(companyId){
+			return $http.get(baseUrl + '/departments?where=companyId='+companyId)
+					.then(function(response) {
+						return response.data;
+					});
+		}
 		function getDepartmentObjectivesById(companyId, departmentId){
 			return $http.get(baseUrl + '/companies/' + companyId + '/departments/' + departmentId + '/department-objectives?include=keyResults,assignments,assignments.employee')
 					.then(function(response) {
